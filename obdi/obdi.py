@@ -83,11 +83,11 @@ class OBDI(object):
             return self.dtc
 
     def write_logs(self):
-        with open('speedlog4.txt', 'w') as sl:
+        with open('speedlog.txt', 'w') as sl:
             for item in self.speed_log:
                 print >> sl, item
         
-        with open('rpmlog4.txt', 'w') as rl:
+        with open('rpmlog.txt', 'w') as rl:
             for item in self.rpm_log:
                 print >> rl, item
 
