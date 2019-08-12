@@ -31,7 +31,7 @@ class ELM327(object):
                 self.ser.flushOutput()
                 self.ser.flushInput()
                 self.ser.write('ath0\r')
-                print "Testing Connection: ", self._read().split(' ')
+                print "Testing Connection: ", self._read()
                 time.sleep(1)
                 self.ser.flushInput()
                 self.ser.flushOutput()
