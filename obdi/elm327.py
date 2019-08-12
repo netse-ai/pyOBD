@@ -37,7 +37,7 @@ class ELM327(object):
                 self.ser.flushOutput()
                 print "Connection Succesful"
             else:
-                print "error"
+                print "Connection Error"
 
         except SerialException:
             print "Serial Exception Error"
@@ -47,6 +47,7 @@ class ELM327(object):
             cmd += "\r"
             self.ser.flushInput()
             self.ser.write(cmd)
+            print self._read()
             self.ser.flush()
 
     def _read(self):
