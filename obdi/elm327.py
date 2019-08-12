@@ -22,13 +22,16 @@ class ELM327(object):
                 os.system("sudo rfcomm bind rfcomm0 00:1D:A5:02:86:67")
             
             try:
-                self.ser = serial.Serial('dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
+                self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
                 if self.ser.isOpen():
                     print "Connection with: {0} established".format(self.ser.name)
 
                     self.ser.write('ATZ\r')
+                    self.ser.flushOutput()
                     self.ser.write('astp0\r')
-                    self.ser.write('atho\r')
+                    self.ser.flushOutput()
+                    self.ser.write('ath0\r')
+                    self.ser.flushOutput()
                     print "Testing Connection: ", self.ser.readline().split(' ')
                     time.sleep(1)
                     self.ser.flushInput()
@@ -38,7 +41,7 @@ class ELM327(object):
                     print "error"
 
             except SerialException:
-                print "Error"
+                print "Serial Exception Error"
 
     def _command(self, cmd):
         if self.ser.isOpen():
