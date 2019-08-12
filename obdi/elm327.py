@@ -47,14 +47,14 @@ class ELM327(object):
             cmd = cmd.cmd
             cmd += "\r"
             print cmd
-            self.ser.flushInput()
+            #self.ser.flushInput()
             self.ser.write(cmd)
             print self._read()
-            self.ser.flush()
+            #self.ser.flush()
 
     def _read(self):
         if self.ser.isOpen():
-            data = self.ser.readline()
+            data = self.ser.readline().split(' ')
             return data
 
     def _test_cmd(self):
