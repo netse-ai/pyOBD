@@ -14,7 +14,7 @@ class ELM327(object):
 
     def _connect(self):
         print "Attempting to Connect"
-	    try:
+        try:
                 stat.S_ISBLK(os.stat("/dev/rfcomm0").st_mode)
         except:
             os.system("sudo rfcomm bind rfcomm0 00:1D:A5:02:86:67")
@@ -30,7 +30,7 @@ class ELM327(object):
                 self.ser.flushOutput()
                 self.ser.write('ath0\r')
                 self.ser.flushOutput()
-                print "Testing Connection: ", self.ser.readline().split(' ')
+                print "Testing Connection: ", self._read().split(' ')
                 time.sleep(1)
                 self.ser.flushInput()
                 self.ser.flushOutput()
@@ -50,5 +50,13 @@ class ELM327(object):
 
     def _read(self):
         if self.ser.isOpen():
-            data = self.ser.readLine()
+            data = self.ser.readline()
             return data
+
+    def _test_cmd(self):
+        if self.ser.isOpen():
+            self.ser.write("ATZ\r")
+            self.ser.flushInput()
+            self.ser.flushOutput()
+            if self.ser.readline() != '':
+                return self.ser.readline().split(' ')
