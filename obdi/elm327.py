@@ -44,7 +44,9 @@ class ELM327(object):
 
     def _command(self, cmd):
         if self.ser.isOpen():
+            cmd = cmd.cmd
             cmd += "\r"
+            print cmd
             self.ser.flushInput()
             self.ser.write(cmd)
             print self._read()
