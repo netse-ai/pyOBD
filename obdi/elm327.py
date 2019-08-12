@@ -18,29 +18,29 @@ class ELM327(object):
                 stat.S_ISBLK(os.stat("/dev/rfcomm0").st_mode)
         except:
             os.system("sudo rfcomm bind rfcomm0 00:1D:A5:02:86:67")
-            try:
-                self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
-                if self.ser.isOpen():
-                    print "Connection with: {0} established".format(self.ser.name)
+        try:
+            self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
+            if self.ser.isOpen():
+                print "Connection with: {0} established".format(self.ser.name)
 
-                    self.ser.flushInput()
-                    self.ser.write('ATZ\r')
-                    self.ser.flushOutput()
-                    self.ser.flushInput()
-                    self.ser.write('astp0\r')
-                    self.ser.flushOutput()
-                    self.ser.flushInput()
-                    self.ser.write('ath0\r')
-                    print "Testing Connection: ", self._read().split(' ')
-                    time.sleep(1)
-                    self.ser.flushInput()
-                    self.ser.flushOutput()
-                    print "Connection Succesful"
-                else:
-                    print "error"
+                self.ser.flushInput()
+                self.ser.write('ATZ\r')
+                self.ser.flushOutput()
+                self.ser.flushInput()
+                self.ser.write('astp0\r')
+                self.ser.flushOutput()
+                self.ser.flushInput()
+                self.ser.write('ath0\r')
+                print "Testing Connection: ", self._read().split(' ')
+                time.sleep(1)
+                self.ser.flushInput()
+                self.ser.flushOutput()
+                print "Connection Succesful"
+            else:
+                print "error"
 
-            except SerialException:
-                print "Serial Exception Error"
+        except SerialException:
+            print "Serial Exception Error"
 
     def _command(self, cmd):
         if self.ser.isOpen():
