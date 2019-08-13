@@ -10,7 +10,7 @@ class OBDCommand(object):
         self.cmd = cmd
         self.description = description
         self.byte_length = byte_length
-        self.decoder
+        self.decoder = decoder
         self.fast = fast
 
     def print_decoder(self):
