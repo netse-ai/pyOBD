@@ -13,7 +13,7 @@ def engine_coolant_temp(val):
     return float(int('0x'+ val, 0)) - 40
 
 def short_term_fuel_trim(val):
-    return (((100/128)*float(int('0x'+ val, 0))) - 100
+    return ((100/128)*float(int('0x'+ val, 0))) - 100
 
 def fuel_pressure(val):
     return 3 * float(int('0x'+ val, 0))
