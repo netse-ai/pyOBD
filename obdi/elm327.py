@@ -64,7 +64,6 @@ class ELM327(object):
 
     def _read(self, byte_length=None, decoder=None):
         if self.ser.isOpen():
-            print byte_length
             data = self.ser.readline().split(' ')
             if byte_length == 1:
                 data = data[-2]
