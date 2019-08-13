@@ -11,7 +11,7 @@ while True:
         print "----------------"
         print obd.cmd(commands["SPEED"]), obd.cmd(commands["RPM"]), obd.cmd(commands["ENGINE_LOAD"]), obd.cmd(commands["COOLANT_TEMP"])
     except KeyboardInterrupt:
-        print sl >> str(obd.cmd(commands["SPEED"]))
+        print >> sl, obd.cmd(commands["SPEED"])
         raise
 
 # while True:
