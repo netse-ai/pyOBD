@@ -61,8 +61,9 @@ class ELM327(object):
                 print k, v
 
             for thread in self.threads:
-                thread.start()
-                thread.join()
+                if not thread.is_alive():
+                    thread.start()
+                    thread.join()
 
 
     def _read(self):
