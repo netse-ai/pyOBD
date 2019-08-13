@@ -18,7 +18,6 @@ cmds = [
     OBDCommand("LONG_FUEL_TRIM_2"           , "Long Term Fuel Trim - Bank 2"            , "0109", 3, fast=True),
     OBDCommand("FUEL_PRESSURE"              , "Fuel Pressure"                           , "010A", 3, fast=True),
     OBDCommand("INTAKE_PRESSURE"            , "Intake Manifold Pressure"                , "010B", 3, fast=True),
-    OBDCommand("RPM"                        , "Engine RPM"                              , "010C", 4, fast=True),
     OBDCommand("TIMING_ADVANCE"             , "Timing Advance"                          , "010E", 3, fast=True),
     OBDCommand("INTAKE_TEMP"                , "Intake Air Temp"                         , "010F", 3, fast=True),
     OBDCommand("MAF"                        , "Air Flow Rate (MAF)"                     , "0110", 4, fast=True),
