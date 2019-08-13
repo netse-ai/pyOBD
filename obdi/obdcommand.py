@@ -4,7 +4,7 @@ class OBDCommand(object):
                  description,
                  cmd,
                  byte_length,
-                 decoder,
+                 decoder=None,
                  fast):
         self.name = name
         self.cmd = cmd
