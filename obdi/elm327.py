@@ -63,7 +63,7 @@ class ELM327(object):
                     thread.join()
 
 
-    def _read(self, byte_length):
+    def _read(self, byte_length=None):
         if self.ser.isOpen():
             data = self.ser.readline().split(' ')
             print "byte_length: ", byte_length
