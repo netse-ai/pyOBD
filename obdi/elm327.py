@@ -72,7 +72,6 @@ class ELM327(object):
             elif byte_length == 2:
                 # print "BYTES: ", byte_length
                 data = data[-2].join(data[-3])
-            data = float(int('0x'+ data, 0))
             return data
 
     def _test_cmd(self):
