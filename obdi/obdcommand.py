@@ -3,10 +3,10 @@ class OBDCommand(object):
                  name,
                  description,
                  cmd,
-                 _bytes,
+                 byte_length,
                  fast):
         self.name = name
         self.cmd = cmd
         self.description = description
-        self._byes = _bytes
+        self.byte_length = byte_length
         self.fast = fast

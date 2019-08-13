@@ -4,7 +4,7 @@ cmds = [
 
     OBDCommand("PIDS_A"                     , "Supported PIDS[01-20]"                   , "0100", 6, fast=True),
     OBDCommand("STATUS"                     , "Status since DTCs cleared"               , "0101", 6, fast=True),
-    OBDCommand("SPEED"                      , "Vehicle speed"                           , "010D", 4, fast=True),
+    OBDCommand("SPEED"                      , "Vehicle speed"                           , "010D", 2, fast=True),
     OBDCommand("RPM"                        , "Enginer RPM"                             , "010C", 4, fast=True),
     OBDCommand("PIDS_A"                     , "Supported PIDs [01-20]"                  , "0100", 6, fast=True),
     OBDCommand("STATUS"                     , "Status since DTCs cleared"               , "0101", 6, fast=True),

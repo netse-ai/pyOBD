@@ -45,10 +45,10 @@ class ELM327(object):
 
     def _command(self, cmd):
         if self.ser.isOpen():
-            cmd = cmd.cmd
-            cmd += "\r"
-            self.ser.write(cmd)
-            return self._read()
+            msg = cmd.cmd
+            msg += "\r"
+            self.ser.write(msg)
+            return self._read(cmd.byte_length)
 
     def _multiple_commands(self, **kwargs):
         if kwargs is not None:
@@ -63,9 +63,10 @@ class ELM327(object):
                     thread.join()
 
 
-    def _read(self):
+    def _read(self, byte_length):
         if self.ser.isOpen():
             data = self.ser.readline().split(' ')
+            print "byte_length: ", byte_length
             return data
 
     def _test_cmd(self):
