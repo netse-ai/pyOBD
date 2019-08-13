@@ -12,13 +12,13 @@ while True:
         print "----------------"
         speed = obd.cmd(commands["SPEED"])
         rpm = obd.cmd(commands["RPM"])
-        el = obd.cmd(commands["ENGINE_LOAD"])
-        cl = obd.cmd(commands["COOLANT_TEMP"])
+        engine_load = obd.cmd(commands["ENGINE_LOAD"])
+        coolant_tmp = obd.cmd(commands["COOLANT_TEMP"])
         print speed, rpm, el, cl
         print >> sl, speed
         print >> rl, rpm
-        print >> el, el
-        print >> cl, cl
+        print >> el, engine_load
+        print >> cl, coolant_tmp
     except KeyboardInterrupt:
         sl.close()
         rl.close()
