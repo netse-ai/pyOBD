@@ -53,7 +53,7 @@ class ELM327(object):
             #self.ser.flush()
 
     def _multiple_commands(self, **kwargs):
-        for k, v in **kwargs.iteritems():
+        for k, v in kwargs.iteritems():
             print k, v
 
 
