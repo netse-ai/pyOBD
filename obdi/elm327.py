@@ -52,6 +52,11 @@ class ELM327(object):
             print self._read()
             #self.ser.flush()
 
+    def _multiple_commands(self, **kwargs):
+        for k, v in **kwargs.iteritems():
+            print k, v
+
+
     def _read(self):
         if self.ser.isOpen():
             data = self.ser.readline().split(' ')

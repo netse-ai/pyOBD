@@ -1,11 +1,11 @@
 from obdcommand import OBDCommand
-   
+
 cmds = [
 
-    OBDCommand("PIDS_A"                     , "Supported PIDS[01-20]"                   , "0100" , 6,  fast=True),
-    OBDCommand("STATUS"                     , "Status since DTCs cleared"               , "0101" , 6, fast=True),
-    OBDCommand("SPEED"                      , "Vehicle speed"                           , "010D" , 4, fast=True),
-    OBDCommand("RPM"                        , "Enginer RPM"                             , "010C" , 4, fast=True),
+    OBDCommand("PIDS_A"                     , "Supported PIDS[01-20]"                   , "0100", 6, fast=True),
+    OBDCommand("STATUS"                     , "Status since DTCs cleared"               , "0101", 6, fast=True),
+    OBDCommand("SPEED"                      , "Vehicle speed"                           , "010D", 4, fast=True),
+    OBDCommand("RPM"                        , "Enginer RPM"                             , "010C", 4, fast=True),
     OBDCommand("PIDS_A"                     , "Supported PIDs [01-20]"                  , "0100", 6, fast=True),
     OBDCommand("STATUS"                     , "Status since DTCs cleared"               , "0101", 6, fast=True),
     OBDCommand("FREEZE_DTC"                 , "DTC that triggered the freeze frame"     , "0102", 4, fast=True),
@@ -39,7 +39,7 @@ cmds = [
     OBDCommand("AUX_INPUT_STATUS"           , "Auxiliary input status (power take off)" , "011E", 3, fast=True),
     OBDCommand("RUN_TIME"                   , "Engine Run Time"                         , "011F", 4, fast=True),
 
-    #                      name                             description                    cmd  bytes       decoder           ECU       fast
+    #          name                           description                                  cmd  bytes fast
     OBDCommand("PIDS_B"                     , "Supported PIDs [21-40]"                  , "0120", 6, fast=True),
     OBDCommand("DISTANCE_W_MIL"             , "Distance Traveled with MIL on"           , "0121", 4, fast=True),
     OBDCommand("FUEL_RAIL_PRESSURE_VAC"     , "Fuel Rail Pressure (relative to vacuum)" , "0122", 4, fast=True),
