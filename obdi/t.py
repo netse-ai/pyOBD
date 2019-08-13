@@ -3,15 +3,14 @@ from commands import commands
 obd = OBDI()
 obd.connect()
 
-open('speed_log.txt', 'w') as sl:
-    pass
+sl = open('speed_log.txt', 'w')
 
 while True:
     try:
         print "----------------"
         print obd.cmd(commands["SPEED"]), obd.cmd(commands["RPM"]), obd.cmd(commands["ENGINE_LOAD"]), obd.cmd(commands["COOLANT_TEMP"])
-    except KeyboardInterrupt:
         print >> sl, obd.cmd(commands["SPEED"])
+    except KeyboardInterrupt:
         raise
 
 # while True:
