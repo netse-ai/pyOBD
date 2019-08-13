@@ -17,7 +17,7 @@ while True:
         rl.close()
         el.close()
         cl.close()
-        raise
+        raise Exception('Finished logging...')
 
 # while True:
 #     print obd.cmd(commands["SPEED"]), obd.cmd(commands["RPM"])
