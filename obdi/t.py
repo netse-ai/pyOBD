@@ -9,4 +9,4 @@ while True:
         commands["SPEED"].name: commands["SPEED"],
         commands["RPM"].name: commands["RPM"]
     }
-    obd.interface._multiple_commands(cmds)
+    obd.interface._multiple_commands(**cmds)
