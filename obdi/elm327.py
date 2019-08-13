@@ -67,10 +67,8 @@ class ELM327(object):
             print byte_length
             data = self.ser.readline().split(' ')
             if byte_length == 1:
-                # print "BYTES: ", byte_length
                 data = data[-2]
             elif byte_length == 2:
-                # print "BYTES: ", byte_length
                 data = data[-2].join(data[-3])
             if decoder != None:
                 return decoder(data)

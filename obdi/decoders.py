@@ -5,3 +5,18 @@ def rpm(val):
     upper = float(int('0x'+ val[0:2], 0)) * 256
     lower = float(int('0x'+ val[2:4], 0))
     return (upper + lower) / 4
+
+def engine_load(val):
+    return float(int('0x'+ val, 0)) / 2.55
+
+def engine_coolant_temp(val):
+    return float(int('0x'+ val, 0)) - 40
+
+def short_term_fuel_trim(val):
+    return (((100/128)*float(int('0x'+ val, 0))) - 100
+
+def fuel_pressure(val):
+    return 3 * float(int('0x'+ val, 0))
+
+def intake_manifold_pressure(val):
+    return float(int('0x'+ val, 0))
