@@ -68,7 +68,7 @@ class ELM327(object):
             data = self.ser.readline().split(' ')
             if byte_length == 2:
                 data = data[-2]
-            else if byte_length == 4:
+            elif byte_length == 4:
                 data = data[-2].join(data[-3])
             return data
 
