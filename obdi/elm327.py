@@ -72,7 +72,9 @@ class ELM327(object):
             elif byte_length == 2:
                 # print "BYTES: ", byte_length
                 data = data[-2].join(data[-3])
-            return decoder(data)
+            if decoder != None:
+                return decoder(data)
+            return data
 
     def _test_cmd(self):
         if self.ser.isOpen():
