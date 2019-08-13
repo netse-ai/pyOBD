@@ -47,11 +47,8 @@ class ELM327(object):
         if self.ser.isOpen():
             cmd = cmd.cmd
             cmd += "\r"
-            print cmd
-            #self.ser.flushInput()
             self.ser.write(cmd)
-            print self._read()
-            #self.ser.flush()
+            return self._read()
 
     def _multiple_commands(self, **kwargs):
         if kwargs is not None:
