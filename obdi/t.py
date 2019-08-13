@@ -10,8 +10,15 @@ cl = open('enginer_coolant_load_log.txt', 'w')
 while True:
     try:
         print "----------------"
-        print obd.cmd(commands["SPEED"]), obd.cmd(commands["RPM"]), obd.cmd(commands["ENGINE_LOAD"]), obd.cmd(commands["COOLANT_TEMP"])
-        print >> sl, obd.cmd(commands["SPEED"])
+        speed = obd.cmd(commands["SPEED"])
+        rpm = obd.cmd(commands["RPM"])
+        el = obd.cmd(commands["ENGINE_LOAD"])
+        cl = obd.cmd(commands["COOLANT_TEMP"])
+        print speed, rpm, el, cl
+        print >> sl, speed
+        print >> rl, rpm
+        print >> el, el
+        print >> cl, cl
     except KeyboardInterrupt:
         sl.close()
         rl.close()
