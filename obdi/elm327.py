@@ -66,7 +66,10 @@ class ELM327(object):
     def _read(self, byte_length=None):
         if self.ser.isOpen():
             data = self.ser.readline().split(' ')
-            print "byte_length: ", byte_length
+            if byte_length == 2:
+                data = data[-2]
+            else if byte_length == 4:
+                data = data[-2].join(data[-3])
             return data
 
     def _test_cmd(self):
