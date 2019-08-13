@@ -11,6 +11,7 @@ class ELM327(object):
         self.baudrate = baudrate
         self.timeout = timeout
         self.ser = None
+        self.threads = []
 
     def _connect(self):
         print "Attempting to Connect"
@@ -53,10 +54,15 @@ class ELM327(object):
             #self.ser.flush()
 
     def _multiple_commands(self, **kwargs):
-        print kwargs
         if kwargs is not None:
             for k, v in kwargs.iteritems():
+                thread = threading.Thread(target=self._command, args=(v,))
+                self.threads.append(thread)
                 print k, v
+
+            for thread in self.threads:
+                thread.start()
+                thread.join()
 
 
     def _read(self):
