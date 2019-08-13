@@ -3,7 +3,7 @@ from commands import commands
 obd = OBDI()
 obd.connect()
 
-with open('speed_log.txt', 'w') as sl:
+open('speed_log.txt', 'w') as sl:
     pass
 
 while True:
