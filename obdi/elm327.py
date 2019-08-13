@@ -64,12 +64,13 @@ class ELM327(object):
 
     def _read(self, byte_length=None):
         if self.ser.isOpen():
+            print byte_length
             data = self.ser.readline().split(' ')
             if byte_length == 2:
-                print "BYTES: ", byte_length
+                # print "BYTES: ", byte_length
                 data = data[-2]
             elif byte_length == 4:
-                print "BYTES: ", byte_length
+                # print "BYTES: ", byte_length
                 data = data[-2].join(data[-3])
             return data
 
