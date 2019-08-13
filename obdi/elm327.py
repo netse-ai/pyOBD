@@ -53,8 +53,10 @@ class ELM327(object):
             #self.ser.flush()
 
     def _multiple_commands(self, **kwargs):
-        for k, v in kwargs.iteritems():
-            print k, v
+        print kwargs
+        if kwargs is not None:
+            for k, v in kwargs.iteritems():
+                print k, v
 
 
     def _read(self):
