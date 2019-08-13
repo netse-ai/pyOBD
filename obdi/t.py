@@ -4,7 +4,7 @@ obd = OBDI()
 obd.connect()
 print obd.cmd(commands["SPEED"])
 print obd.cmd(commands["RPM"])
-commands["RPM"].decoder("0000")
+commands["RPM"].decoder("1234")
 # while True:
 #     print obd.cmd(commands["SPEED"]), obd.cmd(commands["RPM"])
     # cmds = {
