@@ -4,13 +4,19 @@ obd = OBDI()
 obd.connect()
 
 sl = open('speed_log.txt', 'w')
-
+rl = open('rpm_log.txt', 'w')
+el = open('enginer_load_log.txt', 'w')
+cl = open('enginer_coolant_load_log.txt', 'w')
 while True:
     try:
         print "----------------"
         print obd.cmd(commands["SPEED"]), obd.cmd(commands["RPM"]), obd.cmd(commands["ENGINE_LOAD"]), obd.cmd(commands["COOLANT_TEMP"])
         print >> sl, obd.cmd(commands["SPEED"])
     except KeyboardInterrupt:
+        sl.close()
+        rl.close()
+        el.close()
+        cl.close()
         raise
 
 # while True:
