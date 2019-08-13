@@ -14,7 +14,7 @@ while True:
         rpm = obd.cmd(commands["RPM"])
         engine_load = obd.cmd(commands["ENGINE_LOAD"])
         coolant_tmp = obd.cmd(commands["COOLANT_TEMP"])
-        print speed, rpm, el, cl
+        print speed, rpm, engine_load, coolant_tmp
         print >> sl, speed
         print >> rl, rpm
         print >> el, engine_load
