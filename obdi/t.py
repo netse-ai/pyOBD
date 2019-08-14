@@ -26,6 +26,7 @@ while True:
         cl.close()
         raise Exception('Finished logging...')
 
+#TODO: threading should make this process fast. Slows by a factor of ELM327.timeout for every command
 # while True:
 #     print obd.cmd(commands["SPEED"]), obd.cmd(commands["RPM"])
     # cmds = {
