@@ -34,7 +34,6 @@ class ELM327(object):
                 self.ser.write('ath0\r')
                 print "Testing Connection: ", self._read()
                 time.sleep(1)
-                self.ser.flushInput()
                 self.ser.flushOutput()
                 print "Connection Succesful"
             else:
