@@ -1,5 +1,8 @@
+import sys
 from obd import OBDI
 from commands import commands
+
+
 obd = OBDI()
 obd.connect()
 
@@ -24,7 +27,7 @@ while True:
         rl.close()
         el.close()
         cl.close()
-        raise Exception('Finished logging...')
+        sys.exit(0)
 
 #TODO: threading should make this process fast. Slows by a factor of ELM327.timeout for every command
 # while True:
