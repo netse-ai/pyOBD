@@ -5,7 +5,7 @@ from commands import commands
 
 obd = OBDI(baudrate=38400, timeout=0.25)
 obd.connect()
-
+# 
 # sl = open('speed_log.txt', 'w')
 # rl = open('rpm_log.txt', 'w')
 # el = open('enginer_load_log.txt', 'w')
@@ -20,7 +20,17 @@ while True:
         commands["COOLANT_TEMP"].name: commands["COOLANT_TEMP"]
     }
 
-    print obd.interface.multi_commands(**cmds)
+    try:
+        responses = obd.interface.multi_commands(**cmds)
+        speed = responses['SPEED']
+        rpm = responses['RPM']
+        engine_load = responses['ENGINE_LOAD']
+        coolant_tmp = responses['COOLANT_TEMP']
+        print speed, rpm, engine_load, coolant_tmp
+        # print >> sl, speed
+        # print >> rl, rpm
+        # print >> el, engine_load
+        # print >> cl, coolant_tmp
 
     # try:
     #     print "----------------"
