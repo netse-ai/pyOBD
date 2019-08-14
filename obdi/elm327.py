@@ -13,7 +13,7 @@ class ELM327(object):
         self.ser = None
         self.threads = []
 
-    def _connect(self):
+    def connect(self):
         print "Attempting to Connect"
         try:
                 stat.S_ISBLK(os.stat("/dev/rfcomm0").st_mode)
@@ -24,44 +24,31 @@ class ELM327(object):
             if self.ser.isOpen():
                 print "Connection with: {0} established".format(self.ser.name)
 
-                self.ser.flushInput()
-                self.ser.write('ATZ\r')
-                self.ser.flushOutput()
-                self.ser.flushInput()
-                self.ser.write('ASTP0\r')
-                self.ser.flushOutput()
-                self.ser.flushInput()
-                self.ser.write('ATH0\r')
-                print "Testing Connection: ", self._read()
+                try:
+                    self.write("ATZ\r")
+                except:
+                self.write('ASTP0\r')
+                self.write('ATH0\r')
+                print "Testing Connection Read"
+                try:
+                    self.read()
+                except:
+                    print "Read Error"
                 time.sleep(1)
-                self.ser.flushOutput()
-                print "Connection Succesful"
             else:
                 print "Connection Error"
 
         except SerialException:
             print "Serial Exception Error"
 
-    def _command(self, cmd):
+    def command(self, cmd):
         if self.ser.isOpen():
             msg = cmd.cmd
             msg += "\r"
-            self.ser.write(msg)
-            return self._read(cmd.byte_length, cmd.decoder)
+            self.write(msg)
+            return self.read(cmd.byte_length, cmd.decoder)
 
-    def _multiple_commands(self, **kwargs):
-        if kwargs is not None:
-            for k, v in kwargs.iteritems():
-                thread = threading.Thread(target=self._command, args=(v,))
-                self.threads.append(thread)
-                print k, v
-
-            for thread in self.threads:
-                if not thread.is_alive():
-                    thread.start()
-                    thread.join()
-
-    def _read(self, byte_length=None, decoder=None):
+    def read(self, byte_length=None, decoder=None):
         if self.ser.isOpen():
             data = self.ser.readline().split(' ')
             if byte_length == 1:
@@ -72,10 +59,21 @@ class ELM327(object):
                 return decoder(data)
             return data
 
-    def _test_cmd(self):
+    def write(self, cmd):
         if self.ser.isOpen():
-            self.ser.write("ATZ\r")
-            self.ser.flushInput()
-            self.ser.flushOutput()
-            if self.ser.readline() != '':
-                return self.ser.readline().split(' ')
+            try:
+                self.ser.flushInput()
+                self.ser.write(cmd)
+                self.ser.flush()
+            except Exception:
+                self.ser.close()
+                print "Error: Writing"
+        else:
+            "Device not connected."
+
+    def multi_commands(self, **kwargs):
+        responses = {}
+        if kwargs is not None:
+            for k, v in kwargs.iteritems():
+                responses[k] = self.command(v)
+        return responses

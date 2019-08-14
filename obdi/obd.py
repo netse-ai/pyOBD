@@ -1,11 +1,11 @@
 from elm327 import ELM327
 
 class OBDI(object):
-    def __init__(self):
-        self.interface = ELM327(38400, 0.25)
+    def __init__(self, baudrate, timeout):
+        self.interface = ELM327(baudrate, timeout)
 
     def connect(self):
-        self.interface._connect()
+        self.interface.connect()
 
     def cmd(self, cmd):
-        return self.interface._command(cmd)
+        return self.interface.command(cmd)
