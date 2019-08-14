@@ -32,6 +32,7 @@ while True:
         print >> el, engine_load
         print >> cl, coolant_tmp
     except KeyboardInterrupt:
+        print "Finishing..."
         sys.exit(0)
 
     # try:
