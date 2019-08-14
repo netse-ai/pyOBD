@@ -3,7 +3,7 @@ from obd import OBDI
 from commands import commands
 
 
-obd = OBDI()
+obd = OBDI(baudrate=38400, timeout=0.25)
 obd.connect()
 
 # sl = open('speed_log.txt', 'w')
