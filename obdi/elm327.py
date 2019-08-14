@@ -27,9 +27,9 @@ class ELM327(object):
                 try:
                     self.write("ATZ\r")
                 except:
-                self.write('ASTP0\r')
-                self.write('ATH0\r')
-                print "Testing Connection Read"
+                    self.write('ASTP0\r')
+                    self.write('ATH0\r')
+                    print "Testing Connection Read"
                 try:
                     self.read()
                 except:
