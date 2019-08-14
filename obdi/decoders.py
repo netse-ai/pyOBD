@@ -1,5 +1,5 @@
 def speed(val):
-    return float(int('0x'+ val, 0))
+    return float(int('0x'+ val, 0)) * .6214
 
 def rpm(val):
     upper = float(int('0x'+ val[0:2], 0)) * 256
