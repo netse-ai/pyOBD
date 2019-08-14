@@ -20,7 +20,7 @@ while True:
         commands["COOLANT_TEMP"].name: commands["COOLANT_TEMP"]
     }
 
-    print obd.multi_commands(cmds)
+    print obd.interface.multi_commands(cmds)
 
     # try:
     #     print "----------------"
