@@ -5,21 +5,20 @@ from commands import commands
 
 obd = OBDI(baudrate=38400, timeout=0.25)
 obd.connect()
-#
-# sl = open('speed_log.txt', 'w')
-# rl = open('rpm_log.txt', 'w')
-# el = open('enginer_load_log.txt', 'w')
-# cl = open('enginer_coolant_load_log.txt', 'w')
+
+sl = open('speed_log.txt', 'w')
+rl = open('rpm_log.txt', 'w')
+el = open('enginer_load_log.txt', 'w')
+cl = open('enginer_coolant_load_log.txt', 'w')
+
+cmds = {
+    commands["SPEED"].name: commands["SPEED"],
+    commands["RPM"].name: commands["RPM"],
+    commands["ENGINE_LOAD"].name: commands["ENGINE_LOAD"],
+    commands["COOLANT_TEMP"].name: commands["COOLANT_TEMP"]
+}
 
 while True:
-
-    cmds = {
-        commands["SPEED"].name: commands["SPEED"],
-        commands["RPM"].name: commands["RPM"],
-        commands["ENGINE_LOAD"].name: commands["ENGINE_LOAD"],
-        commands["COOLANT_TEMP"].name: commands["COOLANT_TEMP"]
-    }
-
     try:
         responses = obd.interface.multi_commands(**cmds)
         speed = responses['SPEED']
@@ -27,10 +26,10 @@ while True:
         engine_load = responses['ENGINE_LOAD']
         coolant_tmp = responses['COOLANT_TEMP']
         print speed, rpm, engine_load, coolant_tmp
-        # print >> sl, speed
-        # print >> rl, rpm
-        # print >> el, engine_load
-        # print >> cl, coolant_tmp
+        print >> sl, speed
+        print >> rl, rpm
+        print >> el, engine_load
+        print >> cl, coolant_tmp
     except KeyboardInterrupt:
         sys.exit(0)
 
