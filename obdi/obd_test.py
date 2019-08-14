@@ -25,6 +25,7 @@ while True:
         rpm = responses['RPM']
         engine_load = responses['ENGINE_LOAD']
         coolant_tmp = responses['COOLANT_TEMP']
+        print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t"
         print speed, rpm, engine_load, coolant_tmp
         print >> sl, speed
         print >> rl, rpm
