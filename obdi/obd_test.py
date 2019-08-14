@@ -31,6 +31,8 @@ while True:
         # print >> rl, rpm
         # print >> el, engine_load
         # print >> cl, coolant_tmp
+    except KeyboardInterrupt:
+        sys.exit(0)
 
     # try:
     #     print "----------------"
