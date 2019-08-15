@@ -6,22 +6,8 @@ from obd import OBDI
 from commands import commands
 
 
-# obd = OBDI(baudrate=38400, timeout=0.25)
-# obd.connect()
-
-devices = pexpect.spawn("bluetoothctl")
-print devices
-
-nearby_devices = bluetooth.discover_devices(lookup_names=True)
-
-bd_addr = None
-for addr, name  in nearby_devices:
-    if name == "OBDII":
-        bd_addr = addr
-port = 1
-sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-sock.connect((bd_addr, port))
-
+obd = OBDI(baudrate=38400, timeout=0.25)
+obd.connect()
 
 # sl = open('speed_log.txt3', 'w')
 # rl = open('rpm_log.txt3', 'w')

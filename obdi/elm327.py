@@ -3,6 +3,7 @@ import time
 import threading
 import os
 import stat
+import bluetooth
 from commands import commands
 from serial import SerialException
 
@@ -18,7 +19,12 @@ class ELM327(object):
         try:
                 stat.S_ISBLK(os.stat("/dev/rfcomm0").st_mode)
         except:
-            os.system("sudo rfcomm bind rfcomm0 00:1D:A5:02:86:67")
+            nearby_devices = bluetooth.discover_devices(lookup_names=True)
+            bd_addr = None
+            for addr, name  in nearby_devices:
+                if name == "OBDII":
+                    bd_addr = addr
+            os.system("sudo rfcomm bind rfcomm0 " + bd_addr)
         try:
             self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
             if self.ser.isOpen():
