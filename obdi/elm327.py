@@ -42,7 +42,9 @@ class ELM327(object):
                 self.write('ATH0\r')
                 print "Testing Connection Read"
                 try:
-                    self.read()
+                    read = self.read()
+                    print read
+                    print "Connection Succesful"
                 except:
                     print "Read Error"
                 time.sleep(1)
