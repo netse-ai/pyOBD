@@ -17,17 +17,17 @@ class ELM327(object):
     def connect(self):
         print "Attempting to Connect"
         # try:
-        #         stat.S_ISBLK(os.stat("/dev/rfcomm0").st_mode)
+        stat.S_ISBLK(os.stat("/dev/rfcomm0").st_mode)
         # except:
-        nearby_devices = bluetooth.discover_devices(lookup_names=True)
-        print "NEAR BY DEVICES?"
-        bd_addr = None
-        for addr, name  in nearby_devices:
-            print addr, name
-            if name == "OBDII":
-                bd_addr = addr
-        os.system("sudo rfcomm bind rfcomm0 " + bd_addr)
-        print "sudo rfcomm bind rfcomm0 " + bd_addr
+            # nearby_devices = bluetooth.discover_devices(lookup_names=True)
+            # print "NEAR BY DEVICES?"
+            # bd_addr = None
+            # for addr, name  in nearby_devices:
+            #     print addr, name
+            #     if name == "OBDII":
+            #         bd_addr = addr
+            # os.system("sudo rfcomm bind rfcomm0 " + bd_addr)
+            # print "sudo rfcomm bind rfcomm0 " + bd_addr
         try:
             self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
             if self.ser.isOpen():
