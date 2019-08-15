@@ -1,5 +1,7 @@
 import sys
 import glob
+import pexpect
+import bluetooth
 from obd import OBDI
 from commands import commands
 
@@ -7,11 +9,18 @@ from commands import commands
 # obd = OBDI(baudrate=38400, timeout=0.25)
 # obd.connect()
 
-possible_ports = []
-if sys.platform.startswith('linux'):
-    possible_ports += glob.glob("/dev/rfcomm[0-9]*")
-    possible_ports += glob.glob("/dev/ttyUSB[0-9]*")
-print possible_ports
+devices = pexpect.spawn("bluetoothctl")
+print devices
+
+nearby_devices = bluetooth.discover_devices(lookup_names=True)
+
+bd_addr = None
+for addr, name  in nearby_devices:
+    if name == "OBDII":
+        bd_addr = addr
+port = 1
+sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+sock.connect((bd_addr, port))
 
 
 # sl = open('speed_log.txt3', 'w')
