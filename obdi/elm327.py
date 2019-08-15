@@ -4,6 +4,7 @@ import threading
 import os
 import sys
 import stat
+import bluetooth
 from commands import commands
 from serial import SerialException
 
