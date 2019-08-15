@@ -17,6 +17,9 @@ class ELM327(object):
     def connect(self):
 
         print "Attempting to Connect"
+        #TODO: Finding the address of the device does not seem to work
+        # permissions are required if you try to manually create rfcomm socket using bluetooth
+        #
         # try:
         #     stat.S_ISBLK(os.stat("/dev/rfcomm0").st_mode)
         # except:
