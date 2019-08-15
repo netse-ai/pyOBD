@@ -33,27 +33,27 @@ class ELM327(object):
         #             bd_addr = addr
         #     os.system("sudo rfcomm bind rfcomm0 " + bd_addr)
         #     print "sudo rfcomm bind rfcomm0 " + bd_addr == "sudo rfcomm bind rfcomm0 00:1D:A5:02:86:67"
-        try:
-            self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
-            if self.ser.isOpen():
-                print "Connection with: {0} established".format(self.ser.name)
+            try:
+                self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
+                if self.ser.isOpen():
+                    print "Connection with: {0} established".format(self.ser.name)
 
-                try:
-                    self.write("ATZ\r")
-                except:
-                    self.write('ASTP0\r')
-                    self.write('ATH0\r')
-                    print "Testing Connection Read"
-                try:
-                    self.read()
-                except:
-                    print "Read Error"
-                time.sleep(1)
-            else:
-                print "Connection Error"
+                    try:
+                        self.write("ATZ\r")
+                    except:
+                        self.write('ASTP0\r')
+                        self.write('ATH0\r')
+                        print "Testing Connection Read"
+                    try:
+                        self.read()
+                    except:
+                        print "Read Error"
+                    time.sleep(1)
+                else:
+                    print "Connection Error"
 
-        except SerialException:
-            print "Serial Exception Error"
+            except SerialException:
+                print "Serial Exception Error"
 
     def command(self, cmd):
         if self.ser.isOpen():
