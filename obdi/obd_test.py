@@ -6,6 +6,13 @@ from commands import commands
 obd = OBDI(baudrate=38400, timeout=0.25)
 obd.connect()
 
+possible_ports = []
+if sys.platform.startswith('linux'):
+    possible_ports += glob.glob("/dev/rfcomm[0-9]*")
+    possible_ports += glob.glob("/dev/ttyUSB[0-9]*")
+print possible_ports
+
+
 sl = open('speed_log.txt3', 'w')
 rl = open('rpm_log.txt3', 'w')
 el = open('enginer_load_log.txt3', 'w')
