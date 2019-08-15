@@ -27,7 +27,7 @@ class ELM327(object):
             if name == "OBDII":
                 bd_addr = addr
         os.system("sudo rfcomm bind rfcomm0 " + bd_addr)
-        print bd_addr
+        print "sudo rfcomm bind rfcomm0 " + bd_addr
         try:
             self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
             if self.ser.isOpen():
