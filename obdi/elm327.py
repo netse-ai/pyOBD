@@ -22,6 +22,7 @@ class ELM327(object):
             nearby_devices = bluetooth.discover_devices(lookup_names=True)
             bd_addr = None
             for addr, name  in nearby_devices:
+                print addr, name
                 if name == "OBDII":
                     bd_addr = addr
             os.system("sudo rfcomm bind rfcomm0 " + bd_addr)
