@@ -9,10 +9,10 @@ from commands import commands
 obd = OBDI(baudrate=38400, timeout=0.25)
 obd.connect()
 
-sl = open('speed_log.txt4', 'w')
-rl = open('rpm_log.txt4', 'w')
-el = open('enginer_load_log.txt4', 'w')
-cl = open('enginer_coolant_load_log.txt4', 'w')
+sl = open('speed_log.txt5', 'w')
+rl = open('rpm_log.txt5', 'w')
+el = open('enginer_load_log.txt5', 'w')
+cl = open('enginer_coolant_load_log.txt5', 'w')
 
 cmds = {
     commands["SPEED"].name: commands["SPEED"],
