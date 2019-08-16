@@ -73,7 +73,10 @@ class ELM327(object):
             elif byte_length == 2:
                 data = data[-2].join(data[-3])
             if decoder != None:
-                return decoder(data)
+                try:
+                    return decoder(data)
+                except ValueError:
+                    return 0
             return data
 
     def write(self, cmd):
