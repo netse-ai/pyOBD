@@ -76,7 +76,7 @@ class ELM327(object):
                 try:
                     return decoder(data)
                 except ValueError:
-                    return 0
+                    return 10010101
             return data
 
     def write(self, cmd):
