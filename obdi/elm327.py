@@ -58,6 +58,11 @@ class ELM327(object):
         except SerialException:
             print "Serial Exception Error"
 
+    def monitor_all(self):
+        if self.ser.isOpen():
+            self.write("ATMA\r")
+            print self.ser.readline(' ')
+
     def command(self, cmd):
         if self.ser.isOpen():
             msg = cmd.cmd
