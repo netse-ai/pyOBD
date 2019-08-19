@@ -24,14 +24,14 @@ cmds = {
 }
 
 while True:
-    try:
-        responses = obd.interface.multi_commands(**cmds)
-        speed = responses['SPEED']
-        rpm = responses['RPM']
-        engine_load = responses['ENGINE_LOAD']
-        coolant_tmp = responses['COOLANT_TEMP']
-        print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t"
-        print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp
+    # try:
+    responses = obd.interface.multi_commands(**cmds)
+    speed = responses['SPEED']
+    rpm = responses['RPM']
+    engine_load = responses['ENGINE_LOAD']
+    coolant_tmp = responses['COOLANT_TEMP']
+    print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t"
+    print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp
         # print >> sl, speed
 #         print >> rl, rpm
 #         print >> el, engine_load
