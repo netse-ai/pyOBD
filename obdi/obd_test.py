@@ -6,7 +6,7 @@ from obd import OBDI
 from commands import commands
 
 
-obd = OBDI(baudrate=38400, timeout=0.25)
+obd = OBDI(baudrate=115200, timeout=0.25)
 obd.connect()
 
 obd.interface.monitor_all()
