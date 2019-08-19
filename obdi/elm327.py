@@ -62,7 +62,7 @@ class ELM327(object):
         if self.ser.isOpen():
             while True:
                 self.write("ATMA\r")
-                print self.ser.readline()
+                print self.read()
 
 
     def command(self, cmd):
