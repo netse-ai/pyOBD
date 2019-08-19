@@ -43,7 +43,7 @@ class ELM327(object):
                 print "Connection with: {0} established".format(self.ser.name)
                 self.write("ATZ\r")
                 self.write('ASTP0\r')
-                self.write('ATH0\r')
+                # self.write('ATH0\r')
                 print "Testing Connection Read"
                 try:
                     read = self.read()
@@ -63,7 +63,7 @@ class ELM327(object):
             while True:
                 self.write("ATMA\r")
                 print self.ser.readline()
-                
+
 
     def command(self, cmd):
         if self.ser.isOpen():
