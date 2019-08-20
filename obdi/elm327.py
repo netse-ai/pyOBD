@@ -18,7 +18,7 @@ class ELM327(object):
 
         print "Attempting to Connect"
         #TODO: Finding the address of the device does not seem to work
-        # permissions are required if you try to manually create rfcomm socket using bluetooth
+        # root permissions are required if you try to manually create rfcomm socket using bluetooth
         #
         # try:
         #     stat.S_ISBLK(os.stat("/dev/rfcomm0").st_mode)
@@ -43,7 +43,7 @@ class ELM327(object):
                 print "Connection with: {0} established".format(self.ser.name)
                 self.write("ATZ\r")
                 self.write('ASTP0\r')
-                # self.write('ATH0\r')
+                self.write('ATH0\r')
                 print "Testing Connection Read"
                 try:
                     read = self.read()
@@ -64,7 +64,6 @@ class ELM327(object):
                 self.write("ATMA\r")
                 print self.read()
 
-
     def command(self, cmd):
         if self.ser.isOpen():
             msg = cmd.cmd
@@ -83,7 +82,8 @@ class ELM327(object):
                 try:
                     return decoder(data)
                 except ValueError:
-                    return 10010101
+                    #return a number that can never be reached
+                    return 1000000001
             return data
 
     def write(self, cmd):
@@ -102,8 +102,5 @@ class ELM327(object):
         responses = {}
         if kwargs is not None:
             for k, v in kwargs.iteritems():
-                # try:
                 responses[k] = self.command(v)
-                # except:
-
         return responses
