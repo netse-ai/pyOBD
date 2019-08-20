@@ -43,7 +43,7 @@ class ELM327(object):
                 print "Connection with: {0} established".format(self.ser.name)
                 self.write("ATZ\r")
                 self.write('ASTP0\r')
-                # self.write('ATH0\r')
+                self.write('ATH1\r')
                 print "Testing Connection Read"
                 try:
                     read = self.read()
