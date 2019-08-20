@@ -9,8 +9,6 @@ from commands import commands
 obd = OBDI(baudrate=38400, timeout=0.25)
 obd.connect()
 
-obd.interface.monitor_all()
-
 sl = open('speed_log.txt', 'w')
 rl = open('rpm_log.txt', 'w')
 el = open('enginer_load_log.txt', 'w')
