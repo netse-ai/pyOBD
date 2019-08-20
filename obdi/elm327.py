@@ -41,14 +41,13 @@ class ELM327(object):
             self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
             if self.ser.isOpen():
                 print "Connection with: {0} established".format(self.ser.name)
+                self.write("ATZ\r")
+                self.write('ASTP0\r')
+                self.write('ATH0\r')
+                print "Testing Connection Read"
                 try:
-                    self.write("ATZ\r")
-                except:
-                    self.write('ASTP0\r')
-                    self.write('ATH0\r')
-                    print "Testing Connection Read"
-                try:
-                    self.read()
+                    read = self.read()
+                    print "Connection Succesful"
                 except:
                     print "Read Error"
                 time.sleep(1)
@@ -74,7 +73,6 @@ class ELM327(object):
     def read(self, byte_length=None, decoder=None):
         if self.ser.isOpen():
             data = self.ser.readline().split(' ')
-            print data
             if byte_length == 1:
                 data = data[-2]
             elif byte_length == 2:
