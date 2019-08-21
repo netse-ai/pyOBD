@@ -9,3 +9,6 @@ class OBDI(object):
 
     def cmd(self, cmd):
         return self.interface.command(cmd)
+
+    def multi_cmd(self, **cmd):
+        return self.interface.multi_commands(**cmd)

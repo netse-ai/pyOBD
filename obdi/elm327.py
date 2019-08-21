@@ -41,6 +41,7 @@ class ELM327(object):
             self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
             if self.ser.isOpen():
                 print "Connection with: {0} established".format(self.ser.name)
+                self.write("ATSPO\r")
                 self.write("ATZ\r")
                 self.write('ASTP0\r')
                 self.write('ATH0\r')
@@ -96,6 +97,11 @@ class ELM327(object):
                 print "Error: Writing"
         else:
             "Device not connected."
+
+    def write_byte_commands(self, byte_command):
+        if self.ser.isOpen():
+            self.ser.write(byte_command)
+            print self.ser.readline()
 
     def multi_commands(self, **kwargs):
         responses = {}
