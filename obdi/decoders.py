@@ -2,7 +2,7 @@ def speed(val):
     try:
         data = float(int('0x'+ val, 0)) * .6214
     except ValueError:
-        data = 0
+        data = None
     return data
 
 def rpm(val):
@@ -11,15 +11,23 @@ def rpm(val):
         lower = float(int('0x'+ val[2:4], 0))
         data = (upper + lower) / 4
     except ValueError:
-        data = 0
+        data = None
     return data
 
 def engine_load(val):
-    return float(int('0x'+ val, 0)) / 2.55
+    try:
+        data = float(int('0x'+ val, 0)) / 2.55
+    except ValueError:
+        data = None
+    return data
 
 def engine_coolant_temp(val):
-    return float(int('0x'+ val, 0)) - 40
-
+    try:
+        data = float(int('0x'+ val, 0)) - 40
+    except:
+        data = None
+    return data
+    
 def short_term_fuel_trim(val):
     return ((100/128)*float(int('0x'+ val, 0))) - 100
 
