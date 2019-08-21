@@ -87,10 +87,10 @@ class ELM327(object):
             if decoder != None:
                 try:
                     data = decoder(data)
+                    #Issue with returning in a try/except?
                     # return decoder(data)
                 except ValueError:
-                    #return a number that can never be reached
-                    # return 1000000001
+                    #return None
                     data = None
             return data
 
