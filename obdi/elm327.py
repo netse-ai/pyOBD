@@ -41,7 +41,7 @@ class ELM327(object):
             self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
             if self.ser.isOpen():
                 print "Connection with: {0} established".format(self.ser.name)
-                # self.write("ATSPO")
+                self.write("ATSP0")
                 self.write("ATZ")
                 self.write('ASTP0')
                 self.write('ATH0')
