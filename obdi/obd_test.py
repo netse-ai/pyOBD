@@ -9,8 +9,8 @@ from commands import commands
 obd = OBDI(baudrate=38400, timeout=0.25)
 obd.connect()
 
-while True:
-    obd.interface.write_byte_commands(b'010D')
+# while True:
+#     obd.interface.write_byte_commands(b'010D')
     
 
 # sl = open('speed_log.txt', 'w')
@@ -18,22 +18,22 @@ while True:
 # el = open('engine_load_log.txt', 'w')
 # cl = open('engine_coolant_load_log.txt', 'w')
 
-# cmds = {
-#     commands["SPEED"].name: commands["SPEED"],
-#     commands["RPM"].name: commands["RPM"],
-#     commands["ENGINE_LOAD"].name: commands["ENGINE_LOAD"],
-#     commands["COOLANT_TEMP"].name: commands["COOLANT_TEMP"]
-# }
+cmds = {
+    commands["SPEED"].name: commands["SPEED"],
+    commands["RPM"].name: commands["RPM"],
+    commands["ENGINE_LOAD"].name: commands["ENGINE_LOAD"],
+    commands["COOLANT_TEMP"].name: commands["COOLANT_TEMP"]
+}
 
-# while True:
-#     try:
-#         responses = obd.interface.multi_commands(**cmds)
-#         speed = responses['SPEED']
-#         rpm = responses['RPM']
-#         engine_load = responses['ENGINE_LOAD']
-#         coolant_tmp = responses['COOLANT_TEMP']
-#         print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t"
-#         print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp
+while True:
+    try:
+        responses = obd.interface.multi_commands(**cmds)
+        speed = responses['SPEED']
+        rpm = responses['RPM']
+        engine_load = responses['ENGINE_LOAD']
+        coolant_tmp = responses['COOLANT_TEMP']
+        print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t"
+        print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp
 #         print >> sl, speed
 #         print >> rl, rpm
 #         print >> el, engine_load
