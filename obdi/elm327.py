@@ -86,10 +86,12 @@ class ELM327(object):
                 data = data[-2].join(data[-3])
             if decoder != None:
                 try:
-                    return decoder(data)
+                    data = decoder(data)
+                    # return decoder(data)
                 except ValueError:
                     #return a number that can never be reached
-                    return 1000000001
+                    # return 1000000001
+                    data = None
             return data
 
     def write(self, cmd):

@@ -1,10 +1,18 @@
 def speed(val):
-    return float(int('0x'+ val, 0)) * .6214
+    try:
+        data = float(int('0x'+ val, 0)) * .6214
+    except ValueError:
+        data = 0
+    return data
 
 def rpm(val):
-    upper = float(int('0x'+ val[0:2], 0)) * 256
-    lower = float(int('0x'+ val[2:4], 0))
-    return (upper + lower) / 4
+    try:
+        upper = float(int('0x'+ val[0:2], 0)) * 256
+        lower = float(int('0x'+ val[2:4], 0))
+        data = (upper + lower) / 4
+    except ValueError:
+        data = 0
+    return data
 
 def engine_load(val):
     return float(int('0x'+ val, 0)) / 2.55
