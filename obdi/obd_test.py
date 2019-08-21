@@ -38,9 +38,9 @@ while True:
 #         print >> rl, rpm
 #         print >> el, engine_load
 #         print >> cl, coolant_tmp
-#     except KeyboardInterrupt:
-#         print "\nFinishing..."
-#         sys.exit(0)
+    except KeyboardInterrupt:
+        print "\nFinishing..."
+        sys.exit(0)
 
 # #TODO: threading should make this process fast. Currently slows by a factor of ELM327.timeout for every command
 # # while True:
