@@ -66,10 +66,16 @@ class ELM327(object):
 
     def command(self, cmd):
         if self.ser.isOpen():
-            msg = cmd.cmd
-            msg += "\r"
-            self.write(msg)
-            return self.read(cmd.byte_length, cmd.decoder)
+            if cmd.cmd:
+                msg = cmd.cmd
+                msg += "\r"
+                self.write(msg)
+                return self.read(cmd.byte_length, cmd.decoder)
+            else:
+                msg = cmd
+                msg += '\r'
+                self.write(msg)
+                return self.read()
 
     def read(self, byte_length=None, decoder=None):
         if self.ser.isOpen():
