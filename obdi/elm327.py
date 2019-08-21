@@ -41,10 +41,11 @@ class ELM327(object):
             self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
             if self.ser.isOpen():
                 print "Connection with: {0} established".format(self.ser.name)
-                self.write("ATSPO\r")
-                self.write("ATZ\r")
-                self.write('ASTP0\r')
-                self.write('ATH0\r')
+                self.write("ATSPO")
+                self.write("ATZ")
+                self.write('ASTP0')
+                self.write('ATL1')
+                self.write('ATH0')
                 print "Testing Connection Read"
                 try:
                     read = self.read()
@@ -61,7 +62,7 @@ class ELM327(object):
     def monitor_all(self):
         if self.ser.isOpen():
             while True:
-                self.write("ATMA\r")
+                self.write("ATMA")
                 print self.read()
 
     def command(self, cmd):
@@ -100,6 +101,7 @@ class ELM327(object):
 
     def write_byte_commands(self, byte_command):
         if self.ser.isOpen():
+            byte_command += '\r'
             self.ser.write(byte_command)
             print self.ser.readline()
 

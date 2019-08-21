@@ -9,8 +9,9 @@ from commands import commands
 obd = OBDI(baudrate=38400, timeout=0.25)
 obd.connect()
 
-obd.interface.write_byte_commands(b'ATZ')
-
+while True:
+    obd.interface.write_byte_commands(b'010D')
+    
 
 # sl = open('speed_log.txt', 'w')
 # rl = open('rpm_log.txt', 'w')
