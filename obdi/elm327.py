@@ -66,7 +66,7 @@ class ELM327(object):
 
     def command(self, cmd):
         if self.ser.isOpen():
-            if cmd.cmd:
+            if hasattr(cmd, 'cmd'):
                 msg = cmd.cmd
                 msg += "\r"
                 self.write(msg)
