@@ -7,6 +7,7 @@ def speed(val):
 
 def rpm(val):
     try:
+        print "RPM: {0}".format(val)
         upper = float(int('0x'+ val[0:2], 0)) * 256
         lower = float(int('0x'+ val[2:4], 0))
         data = (upper + lower) / 4
@@ -27,7 +28,7 @@ def engine_coolant_temp(val):
     except:
         data = None
     return data
-    
+
 def short_term_fuel_trim(val):
     return ((100/128)*float(int('0x'+ val, 0))) - 100
 
