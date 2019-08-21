@@ -13,10 +13,10 @@ obd.connect()
 #     obd.interface.write_byte_commands(b'010D')
     
 
-# sl = open('speed_log.txt', 'w')
-# rl = open('rpm_log.txt', 'w')
-# el = open('engine_load_log.txt', 'w')
-# cl = open('engine_coolant_load_log.txt', 'w')
+sl = open('speed_log.txt', 'w')
+rl = open('rpm_log.txt', 'w')
+el = open('engine_load_log.txt', 'w')
+cl = open('engine_coolant_load_log.txt', 'w')
 
 cmds = {
     commands["SPEED"].name: commands["SPEED"],
@@ -34,10 +34,10 @@ while True:
         coolant_tmp = responses['COOLANT_TEMP']
         print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t"
         print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp
-#         print >> sl, speed
-#         print >> rl, rpm
-#         print >> el, engine_load
-#         print >> cl, coolant_tmp
+        print >> sl, speed
+        print >> rl, rpm
+        print >> el, engine_load
+        print >> cl, coolant_tmp
     except KeyboardInterrupt:
         print "\nFinishing..."
         sys.exit(0)
