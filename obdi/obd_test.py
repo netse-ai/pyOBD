@@ -17,6 +17,7 @@ sl = open('speed_log.txt', 'w')
 rl = open('rpm_log.txt', 'w')
 el = open('engine_load_log.txt', 'w')
 cl = open('engine_coolant_load_log.txt', 'w')
+boost = open('boost_pressure.txt', 'w')
 
 cmds = {
     commands["SPEED"].name: commands["SPEED"],
@@ -37,7 +38,7 @@ while True:
         intake_pressure = responses['INTAKE_PRESSURE']
         barometric_pressure = responses['BAROMETRIC_PRESSURE']
         print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t BOOST\t"
-        print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp
+        print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp, "\t", intake_pressure - barometric_pressure
         print >> sl, speed
         print >> rl, rpm
         print >> el, engine_load
