@@ -72,4 +72,10 @@ def fuel_rail_gauge(val):
     return 10 * ((256 * (float(int('0x'+ val[0:2], 0)))) + float(int('0x'+ val[2:4], 0)))
 
 def barometric_pressure(val):
-    return float(int('0x'+ val, 0)) 
+    return float(int('0x'+ val, 0))
+
+def engine_percent_tq(val):
+    upper = float(int('0x'+ val[0:2], 0)) * 256
+    lower = float(int('0x'+ val[2:4], 0))
+    return (upper+lower) * 0.73756
+

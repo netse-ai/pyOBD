@@ -12,12 +12,14 @@ obd = OBDII(baudrate=115200, timeout=0.25)
 #connect to elm327
 obd.connect()
 
+#open files for logging
 sl = open('speed_log.txt', 'w')
 rl = open('rpm_log.txt', 'w')
 el = open('engine_load_log.txt', 'w')
 cl = open('engine_coolant_load_log.txt', 'w')
 boost = open('boost_pressure.txt', 'w')
 
+#create a commands object to be passed to obd
 cmds = {
     commands["SPEED"].name: commands["SPEED"],
     commands["RPM"].name: commands["RPM"],
@@ -25,6 +27,7 @@ cmds = {
     commands["COOLANT_TEMP"].name: commands["COOLANT_TEMP"],
     commands["INTAKE_PRESSURE"].name: commands["INTAKE_PRESSURE"],
     commands["BAROMETRIC_PRESSURE"].name: commands["BAROMETRIC_PRESSURE"],
+    commands["ENGINE_PERCENT_TQ"].name: commands["ENGINE_PERCENT_TQ"],
 }
 
 while True:
@@ -37,8 +40,9 @@ while True:
         intake_pressure = responses['INTAKE_PRESSURE']
         barometric_pressure = responses['BAROMETRIC_PRESSURE']
         boost_pressure = str((intake_pressure - float(barometric_pressure))/6.895)[0:6]
-        print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t BOOST\t"
-        print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp, "\t\t", boost_pressure + " **** " + str(float(boost_pressure) / 14.504)[0:6]
+        tq = responses['BAROMETRIC_PRESSURE']
+        print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t BOOST\t \ttorque \t"
+        print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp, "\t\t", boost_pressure + " **** " + str(float(boost_pressure) / 14.504)[0:6], "\t\t", tq + " **** " + tq*rpm 
 
         print >> sl, speed
         print >> rl, rpm
