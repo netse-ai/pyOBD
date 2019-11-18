@@ -67,3 +67,6 @@ def fuel_rail_pressure(val):
 
 def fuel_rail_gauge(val):
     return 10 * ((256 * (float(int('0x'+ val[0:2], 0)))) + float(int('0x'+ val[2:4], 0)))
+
+def barometric_pressure(val):
+    return float(int('0x'+ val, 0)) 

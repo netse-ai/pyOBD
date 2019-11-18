@@ -6,7 +6,7 @@ from obd import OBDI
 from commands import commands
 
 
-obd = OBDI(baudrate=38400, timeout=0.25)
+obd = OBDI(baudrate=115200, timeout=0.25)
 obd.connect()
 
 # while True:
@@ -22,7 +22,9 @@ cmds = {
     commands["SPEED"].name: commands["SPEED"],
     commands["RPM"].name: commands["RPM"],
     commands["ENGINE_LOAD"].name: commands["ENGINE_LOAD"],
-    commands["COOLANT_TEMP"].name: commands["COOLANT_TEMP"]
+    commands["COOLANT_TEMP"].name: commands["COOLANT_TEMP"],
+    commands["INTAKE_PRESSURE"].name: commands["INTAKE_PRESSURE"],
+    commands["BAROMETRIC_PRESSURE"].name: commands["BAROMETRIC_PRESSURE"],
 }
 
 while True:
@@ -32,12 +34,15 @@ while True:
         rpm = responses['RPM']
         engine_load = responses['ENGINE_LOAD']
         coolant_tmp = responses['COOLANT_TEMP']
-        print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t"
+        intake_pressure = responses['INTAKE_PRESSURE']
+        barometric_pressure = responses['BAROMETRIC_PRESSURE']
+        print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t BOOST\t"
         print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp
         print >> sl, speed
         print >> rl, rpm
         print >> el, engine_load
         print >> cl, coolant_tmp
+        print >> boost, intake_pressure - barometric_pressure
     except KeyboardInterrupt:
         print "\nFinishing..."
         sys.exit(0)
