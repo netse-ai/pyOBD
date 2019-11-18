@@ -53,7 +53,7 @@ cmds = [
     OBDCommand("WARMUPS_SINCE_DTC_CLEAR"    , "Number of warm-ups since codes cleared"  , "0130", 1, decoder=None, fast=True),
     OBDCommand("DISTANCE_SINCE_DTC_CLEAR"   , "Distance traveled since codes cleared"   , "0131", 2, decoder=None, fast=True),
     OBDCommand("EVAP_VAPOR_PRESSURE"        , "Evaporative system vapor pressure"       , "0132", 2, decoder=None, fast=True),
-    OBDCommand("BAROMETRIC_PRESSURE"        , "Barometric Pressure"                     , "0133", 1, decoder=None, fast=True),
+    OBDCommand("BAROMETRIC_PRESSURE"        , "Barometric Pressure"                     , "0133", 1, decoder=barometric_pressure, fast=True),
     OBDCommand("O2_S1_WR_CURRENT"           , "02 Sensor 1 WR Lambda Current"           , "0134", 4, decoder=None, fast=True),
     OBDCommand("O2_S2_WR_CURRENT"           , "02 Sensor 2 WR Lambda Current"           , "0135", 4, decoder=None, fast=True),
     OBDCommand("O2_S3_WR_CURRENT"           , "02 Sensor 3 WR Lambda Current"           , "0136", 4, decoder=None, fast=True),
