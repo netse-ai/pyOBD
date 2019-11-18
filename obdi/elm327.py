@@ -35,6 +35,7 @@ class ELM327(object):
         #
         try:
             stat.S_ISBLK(os.stat("/dev/rfcomm0").st_mode)
+            print "rfcomm0 exists"
         except:
             os.system("sudo rfcomm bind rfcomm0 00:1D:A5:02:86:67")
         try:

@@ -3,16 +3,14 @@ import sys
 import glob
 import pexpect
 import bluetooth
-from obd import OBDI
+from obd import OBDII
 from commands import commands
 
 
-obd = OBDI(baudrate=115200, timeout=0.25)
+#create an OBDI instance
+obd = OBDII(baudrate=115200, timeout=0.25)
+#connect to elm327
 obd.connect()
-
-# while True:
-#     obd.interface.write_byte_commands(b'010D')
-    
 
 sl = open('speed_log.txt', 'w')
 rl = open('rpm_log.txt', 'w')

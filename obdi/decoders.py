@@ -1,3 +1,6 @@
+def at_decoder(val):
+    print(val)
+
 def speed(val):
     try:
         data = float(int('0x'+ val, 0)) * .6214

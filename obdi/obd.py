@@ -1,6 +1,6 @@
 from elm327 import ELM327
 
-class OBDI(object):
+class OBDII(object):
     def __init__(self, baudrate, timeout):
         self.interface = ELM327(baudrate, timeout)
 

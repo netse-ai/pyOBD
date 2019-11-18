@@ -98,6 +98,14 @@ cmds = [
     OBDCommand("FUEL_INJECT_TIMING"         , "Fuel injection timing"                   , "015D", 2, decoder=None, fast=True),
     OBDCommand("FUEL_RATE"                  , "Engine fuel rate"                        , "015E", 2, decoder=None, fast=True),
     OBDCommand("EMISSION_REQ"               , "Designed emission requirements"          , "015F", 1, decoder=None, fast=True),
+
+            #################################### OBD AT COMMANDS ############################################
+    OBDCommand("RESET_ALL"                  , "Reset"                                   , "ATZ",  1, decoder=at_decoder, fast=True),    
+    OBDCommand("LINE_FEED_OFF"              , "Turn off the line feed"                  , "ATL0", 1, decoder=at_decoder, fast=True),
+    OBDCommand("LINE_FEED_ON"               , "Turn on the line feed"                   , "ATL1", 1, decoder=at_decoder, fast=True),
+    OBDCommand("HEADERS_OFF"                , "Turn off the headers"                    , "ATH0", 1, decoder=at_decoder, fast=True),
+    OBDCommand("HEADERS_ON"                 , "Turn on the headers"                     , "ATH1", 1, decoder=at_decoder, fast=True)
+    OBDCommand("MONITOR_ALL"                , "Monitor all"                             , "ATMA", 1, decoder=at_decoder, fast=True)
 ]
 
 class Commands():
