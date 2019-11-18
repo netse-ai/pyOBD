@@ -111,7 +111,7 @@ class ELM327(object):
         if self.ser.isOpen():
             byte_command += '\r'
             self.ser.write(byte_command)
-            print self.ser.readline()
+            #print self.ser.readline()
 
     def multi_commands(self, **kwargs):
         responses = {}
