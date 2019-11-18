@@ -39,7 +39,7 @@ while True:
         intake_pressure = responses['INTAKE_PRESSURE']
         barometric_pressure = responses['BAROMETRIC_PRESSURE']
         print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t BOOST\t"
-        print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp, "\t\t", math.ceil(((intake_pressure - float(barometric_pressure))/6.895)/100.0)*100.0
+        print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp, "\t\t", str((intake_pressure - float(barometric_pressure))/6.895)[0:5]
         print >> sl, speed
         print >> rl, rpm
         print >> el, engine_load
