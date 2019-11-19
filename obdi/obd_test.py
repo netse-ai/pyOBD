@@ -6,10 +6,6 @@ import bluetooth
 from obd import OBDII
 from commands import commands
 
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-from matplotlib import style
-
 
 #create an OBDI instance
 obd = OBDII(baudrate=115200, timeout=0.25)
