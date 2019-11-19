@@ -62,8 +62,7 @@ class ELM327(object):
     def monitor_all(self):
         if self.ser.isOpen():
             while True:
-                self.command("ATMA")
-                print self.read()
+                print self.command("ATMA")
 
     def command(self, cmd):
         if self.ser.isOpen():
