@@ -45,7 +45,7 @@ while True:
         # print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t BOOST\t"
         # print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp, "\t\t", boost_pressure, " **** ", str(float(boost_pressure) / 14.504)[0:6]
         print "Boost PSI", "  -------  ", "Boost BARS"
-        print " ", boost_pressure, "  -------  ", str(float(boost_pressure) / 14.504)[0:6]
+        print " ", boost_pressure, " -------      ", str(float(boost_pressure) / 14.504)[0:6]
         # print >> sl, float(speed)
         # print >> rl, float(rpm)
         # print >> el, float(engine_load)
