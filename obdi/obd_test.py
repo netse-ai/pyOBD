@@ -42,8 +42,8 @@ while True:
         barometric_pressure = responses['BAROMETRIC_PRESSURE']
         boost_pressure = str((intake_pressure - float(barometric_pressure))/6.895)[0:6]
         tq = responses['BAROMETRIC_PRESSURE']
-        print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t BOOST\t \ttorque \t"
-        print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp, "\t\t", boost_pressure, " **** ", float(boost_pressure) / 14.504, "\t\t", tq, " **** ", tq*rpm 
+        print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t BOOST\t"
+        print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp, "\t\t", boost_pressure, " **** ", str(float(boost_pressure) / 14.504)[0:6]
 
         print >> sl, float(speed)
         print >> rl, float(rpm)
