@@ -6,6 +6,10 @@ import bluetooth
 from obd import OBDII
 from commands import commands
 
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from matplotlib import style
+
 
 #create an OBDI instance
 obd = OBDII(baudrate=115200, timeout=0.25)
@@ -30,6 +34,7 @@ cmds = {
     commands["ENGINE_PERCENT_TQ"].name: commands["ENGINE_PERCENT_TQ"],
 }
 
+
 while True:
     try:
         responses = obd.interface.multi_commands(**cmds)
@@ -44,11 +49,12 @@ while True:
         print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t BOOST\t \ttorque \t"
         print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp, "\t\t", boost_pressure + " **** " + str(float(boost_pressure) / 14.504)[0:6], "\t\t", tq + " **** " + tq*rpm 
 
-        print >> sl, speed
-        print >> rl, rpm
-        print >> el, engine_load
-        print >> cl, coolant_tmp
-        print >> boost, boost_pressure
+        print >> sl, float(speed)
+        print >> rl, float(rpm)
+        print >> el, float(engine_load)
+        print >> cl, float(coolant_tmp)
+        print >> boost, float(boost_pressure)
+
     except KeyboardInterrupt:
         print "\nFinishing..."
         sys.exit(0)

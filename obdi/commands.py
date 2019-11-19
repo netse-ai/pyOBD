@@ -101,11 +101,11 @@ cmds = [
     OBDCommand("ENGINE_PERCENT_TQ"          , "Engine percent torque"                   , "0164", 1, decoder=engine_percent_tq, fast=True),
 
             #################################### OBD AT COMMANDS ############################################
-    OBDCommand("RESET_ALL"                  , "Reset all"                                   , "ATZ",  1, decoder=at_decoder, fast=True),    
+    OBDCommand("RESET_ALL"                  , "Reset all"                               , "ATZ",  1, decoder=at_decoder, fast=True),    
     OBDCommand("LINE_FEED_OFF"              , "Turn off the line feed"                  , "ATL0", 1, decoder=at_decoder, fast=True),
     OBDCommand("LINE_FEED_ON"               , "Turn on the line feed"                   , "ATL1", 1, decoder=at_decoder, fast=True),
     OBDCommand("HEADERS_OFF"                , "Turn off the headers"                    , "ATH0", 1, decoder=at_decoder, fast=True),
-    OBDCommand("HEADERS_ON"                 , "Turn on the headers"                     , "ATH1", 1, decoder=at_decoder, fast=True)
+    OBDCommand("HEADERS_ON"                 , "Turn on the headers"                     , "ATH1", 1, decoder=at_decoder, fast=True),
     OBDCommand("MONITOR_ALL"                , "Monitor all"                             , "ATMA", 1, decoder=at_decoder, fast=True)
 ]
 
