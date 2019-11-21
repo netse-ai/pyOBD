@@ -96,6 +96,7 @@ class ELM327(object):
             return data
 
     def write(self, cmd):
+        cmd += "01"
         if self.ser.isOpen():
             try:
                 self.ser.flushInput()
