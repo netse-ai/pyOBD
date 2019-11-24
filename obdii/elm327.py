@@ -6,7 +6,7 @@ import stat
 import bluetooth
 from commands import commands
 from serial import SerialException
-from elm327_error import ELM327_Error
+from elm327_error import ELM327Error
 
 class ELM327(object):
     def __init__(self, baudrate, timeout):
@@ -52,7 +52,7 @@ class ELM327(object):
                     read = self.read()
                     print "Connection Succesful"
                 except:
-                    raise ELM327_Error("Read error")
+                    raise ELM327Error("Read error")
                 time.sleep(1)
             else:
                 print "Connection Error"
