@@ -8,7 +8,7 @@ from commands import commands
 
 
 #create an OBDI instance
-obd = OBDII(baudrate=115200, timeout=0.2)
+obd = OBDII(baudrate=115200, timeout=0.1.25)
 #connect to elm327
 obd.connect()
 
