@@ -36,7 +36,7 @@ class ELM327(object):
         #
         try:
             stat.S_ISBLK(os.stat("/dev/rfcomm0").st_mode)
-            print "rfcomm0 exists"
+            raise ELM327Error("rfcomm0 already exists")
         except:
             os.system("sudo rfcomm bind rfcomm0 00:1D:A5:02:86:67")
         try:
@@ -54,9 +54,6 @@ class ELM327(object):
                 except:
                     raise ELM327Error("Read error")
                 time.sleep(1)
-            else:
-                print "Connection Error"
-
         except SerialException:
             print "Serial Exception Error"
 
