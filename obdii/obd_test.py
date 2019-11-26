@@ -60,9 +60,9 @@ while True:
         data = '-LudfF76bof48zB80laR'
         snapshot = firebase.put('/obdii/boost', data, {'boost pressure': boost_pressure}, {'X_FANCY_HEADER': 'VERY FANCY'})
 
-    # except KeyboardInterrupt:
-    #     print "\nFinishing..."
-        # sys.exit(0)
+    except KeyboardInterrupt:
+        print "\nFinishing..."
+        sys.exit(0)
 
 # #TODO: threading should make this process fast. Currently slows by a factor of ELM327.timeout for every command
 # # while True:
