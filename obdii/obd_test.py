@@ -56,7 +56,7 @@ while True:
         # print >> rl, float(rpm)
         # print >> el, float(engine_load)
         # print >> cl, float(coolant_tmp)
-        print >> boost, float(boost_pressure)
+        # print >> boost, float(boost_pressure)
         data = "-LudfF76bof48zB80laR"
         result = firebase.put('/obdii/boost', data, {'boost_pressure': boost_pressure}, {'X_FANCY_HEADER': 'VERY FANCY'})
 
