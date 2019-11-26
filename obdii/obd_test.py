@@ -24,7 +24,10 @@ cmds = {
     commands["INTAKE_PRESSURE"].name: commands["INTAKE_PRESSURE"],
     commands["BAROMETRIC_PRESSURE"].name: commands["BAROMETRIC_PRESSURE"],
 }
-
+max_psi = 0
+max_bars = 0
+min_psi = 0
+min_bars = 0
 while True:
     try:
         #get obdii responses
@@ -41,8 +44,28 @@ while True:
         print "Boost PSI    -------    Boost BARS"
         print boost_pressure + "       -------    " + boost_bars
 
+        if float(boost_pressure) > max_psi:
+            max_psi = float(boost_pressure)
+
+        if float(boost_bars) > max_bars:
+            max_bars = float(boost_bars)
+
+        if min_psi > float(boost_pressure):
+            min_psi = float(boost_pressure)
+
+        if min_bars > float(boost_bars):
+            min_bars = float(boost_bars)
+
         #write boost readings to firebasse
-        snapshot = firebase.put('/obdii/boost', data, {'boost PSI': boost_pressure, 'boost bars' : str(float(boost_pressure) / 14.504)[0:6]}, {'X_FANCY_HEADER': 'VERY FANCY'})
+        write = {
+            'boost PSI': boost_pressure,
+            'boost bars' : str(float(boost_pressure) / 14.504)[0:6],
+            'max PSI': str(max_psi),
+            'max bars': str(max_bars),
+            'min PSI': str(min_psi),
+            'min bars': str(min_bars),
+        }
+        snapshot = firebase.put('/obdii/boost', data, write, {'X_FANCY_HEADER': 'VERY FANCY'})
     
     except KeyboardInterrupt:
         print "\nFinishing..."
