@@ -59,7 +59,7 @@ while True:
         print >> boost, float(boost_pressure)
         data = '-LudfF76bof48zB80laR'
         snapshot = firebase.put('/obdii/boost', data, {'boost pressure': boost_pressure}, {'X_FANCY_HEADER': 'VERY FANCY'})
-
+        print snapshot
     except KeyboardInterrupt:
         print "\nFinishing..."
         sys.exit(0)
