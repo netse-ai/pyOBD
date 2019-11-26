@@ -33,12 +33,14 @@ cmds = {
 
 from firebase import firebase
 firebase = firebase.FirebaseApplication('https://planit-a12ac.firebaseio.com', None)
-new_user = 'boost'
+data = {'name': 'Ozgur Vatansever', 'age': 26,
+            'created_at': 11111}
+snapshot = firebase.post('/users', data)
+print(snapshot['name'])
 
-# result = firebase.post('/obdii', new_user, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
+
+# result = firebase.get('/obdii/-LudbcIeYtGid05KG1Ae', None, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
 # print result
-result = firebase.get('/obdii/-LudbcIeYtGid05KG1Ae', None, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
-print result
 
 # while True:
 #     try:
