@@ -37,7 +37,8 @@ new_user = 'boost'
 
 result = firebase.post('/obdii', new_user, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
 print result
-
+result = firebase.get('/obdii', None, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
+print result
 
 # while True:
 #     try:
