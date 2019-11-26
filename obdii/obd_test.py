@@ -35,9 +35,9 @@ from firebase import firebase
 firebase = firebase.FirebaseApplication('https://planit-a12ac.firebaseio.com', None)
 new_user = 'boost'
 
-result = firebase.post('/obdii', new_user, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
-print result
-result = firebase.get('/obdii', None, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
+# result = firebase.post('/obdii', new_user, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
+# print result
+result = firebase.get('/obdii/-LudbcIeYtGid05KG1Ae', None, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
 print result
 
 # while True:
