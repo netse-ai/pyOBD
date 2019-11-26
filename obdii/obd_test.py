@@ -34,8 +34,8 @@ cmds = {
 from firebase import firebase
 firebase = firebase.FirebaseApplication('https://planit-a12ac.firebaseio.com', None)
 
-data = "4324234.32"
-result = firebase.put('/obdii/boost/-LudfF76bof48zB80laR', data, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
+data = {"-LudfF76bof48zB80laR": "jkenfk"}
+result = firebase.put('/obdii/boost', data, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
 print result
 # while True:
 #     try:
