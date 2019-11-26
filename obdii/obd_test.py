@@ -35,7 +35,7 @@ from firebase import firebase
 firebase = firebase.FirebaseApplication('https://planit-a12ac.firebaseio.com', None)
 
 data = "4324234.32"
-result = firebase.post('/users', data, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
+result = firebase.post('/obdii/boost', data, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
 print result
 # while True:
 #     try:
