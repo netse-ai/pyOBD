@@ -37,28 +37,28 @@ firebase = firebase.FirebaseApplication('https://planit-a12ac.firebaseio.com', N
 data = "-LudfF76bof48zB80laR"
 result = firebase.put('/obdii/boost', data, {'boost': '34234'}, {'X_FANCY_HEADER': 'VERY FANCY'})
 print result
-# while True:
-#     try:
-#         responses = obd.interface.multi_commands(**cmds)
-#         # speed = responses['SPEED']
-#         # rpm = responses['RPM']
-#         # engine_load = responses['ENGINE_LOAD']
-#         # coolant_tmp = responses['COOLANT_TEMP']
-#         intake_pressure = responses['INTAKE_PRESSURE']
-#         barometric_pressure = responses['BAROMETRIC_PRESSURE']
-#         boost_pressure = str((intake_pressure - float(barometric_pressure))/6.895)[0:6]
-#         # tq = responses['BAROMETRIC_PRESSURE']
-#         # print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t BOOST\t"
-#         # print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp, "\t\t", boost_pressure, " **** ", str(float(boost_pressure) / 14.504)[0:6]
-#         print "Boost PSI    -------    Boost BARS"
-#         print boost_pressure + "       -------    " + str(float(boost_pressure) / 14.504)[0:6]
-#         # print >> sl, float(speed)
-#         # print >> rl, float(rpm)
-#         # print >> el, float(engine_load)
-#         # print >> cl, float(coolant_tmp)
-#         print >> boost, float(boost_pressure)
-        # data = {'boost pressure': str(boost_pressure)}
-        # snapshot = firebase.post('/obdii/-LudcNKKVvXuMSAal7Cx', data)
+while True:
+    try:
+        responses = obd.interface.multi_commands(**cmds)
+        # speed = responses['SPEED']
+        # rpm = responses['RPM']
+        # engine_load = responses['ENGINE_LOAD']
+        # coolant_tmp = responses['COOLANT_TEMP']
+        intake_pressure = responses['INTAKE_PRESSURE']
+        barometric_pressure = responses['BAROMETRIC_PRESSURE']
+        boost_pressure = str((intake_pressure - float(barometric_pressure))/6.895)[0:6]
+        # tq = responses['BAROMETRIC_PRESSURE']
+        # print "SPEED\t RPM\t ENGINE_LOAD\t COOLANT_TEMP\t BOOST\t"
+        # print speed, "\t", rpm, "\t", engine_load, "\t", coolant_tmp, "\t\t", boost_pressure, " **** ", str(float(boost_pressure) / 14.504)[0:6]
+        print "Boost PSI    -------    Boost BARS"
+        print boost_pressure + "       -------    " + str(float(boost_pressure) / 14.504)[0:6]
+        # print >> sl, float(speed)
+        # print >> rl, float(rpm)
+        # print >> el, float(engine_load)
+        # print >> cl, float(coolant_tmp)
+        print >> boost, float(boost_pressure)
+        data = "-LudfF76bof48zB80laR"
+        result = firebase.put('/obdii/boost', data, {'boost_pressure': boost_pressure}, {'X_FANCY_HEADER': 'VERY FANCY'})
 
     # except KeyboardInterrupt:
     #     print "\nFinishing..."
