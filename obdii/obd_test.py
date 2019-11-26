@@ -60,9 +60,9 @@ print result
         # data = {'boost pressure': str(boost_pressure)}
         # snapshot = firebase.post('/obdii/-LudcNKKVvXuMSAal7Cx', data)
 
-    except KeyboardInterrupt:
-        print "\nFinishing..."
-        sys.exit(0)
+    # except KeyboardInterrupt:
+    #     print "\nFinishing..."
+        # sys.exit(0)
 
 # #TODO: threading should make this process fast. Currently slows by a factor of ELM327.timeout for every command
 # # while True:
