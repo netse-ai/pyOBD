@@ -34,6 +34,9 @@ cmds = {
 from firebase import firebase
 firebase = firebase.FirebaseApplication('https://planit-a12ac.firebaseio.com', None)
 
+data = '-LudfF76bof48zB80laR'
+snapshot = firebase.put('/obdii/boost', data, {'boost pressure': "342234234"}, {'X_FANCY_HEADER': 'VERY FANCY'})
+
 # data = "-LudfF76bof48zB80laR"
 # result = firebase.put('/obdii/boost', data, {'boost': '34234'}, {'X_FANCY_HEADER': 'VERY FANCY'})
 # print result
