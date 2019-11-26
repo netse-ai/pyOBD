@@ -56,8 +56,8 @@ while True:
         # print >> el, float(engine_load)
         # print >> cl, float(coolant_tmp)
         print >> boost, float(boost_pressure)
-        data = {'boost pressure': str(boost)}
-        snapshot = firebase.post('/odbii/-LudbcIeYtGid05KG1Ae', data)
+        data = {'boost pressure': str(boost_pressure)}
+        snapshot = firebase.post('/obdii/-LudbcIeYtGid05KG1Ae', data)
 
     except KeyboardInterrupt:
         print "\nFinishing..."
