@@ -24,8 +24,8 @@ cmds = {
     commands["INTAKE_PRESSURE"].name: commands["INTAKE_PRESSURE"],
     commands["BAROMETRIC_PRESSURE"].name: commands["BAROMETRIC_PRESSURE"],
 }
-max_psi = 0
-max_bars = 0
+max_psi = -100
+max_bars = -100
 min_psi = 0
 min_bars = 0
 while True:
