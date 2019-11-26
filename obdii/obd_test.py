@@ -34,9 +34,9 @@ cmds = {
 from firebase import firebase
 firebase = firebase.FirebaseApplication('https://planit-a12ac.firebaseio.com', None)
 
-data = "-LudfF76bof48zB80laR"
-result = firebase.put('/obdii/boost', data, {'boost': '34234'}, {'X_FANCY_HEADER': 'VERY FANCY'})
-print result
+# data = "-LudfF76bof48zB80laR"
+# result = firebase.put('/obdii/boost', data, {'boost': '34234'}, {'X_FANCY_HEADER': 'VERY FANCY'})
+# print result
 while True:
     try:
         responses = obd.interface.multi_commands(**cmds)
@@ -56,9 +56,9 @@ while True:
         # print >> rl, float(rpm)
         # print >> el, float(engine_load)
         # print >> cl, float(coolant_tmp)
-        # print >> boost, float(boost_pressure)
-        data = "-LudfF76bof48zB80laR"
-        result = firebase.put('/obdii/boost', data, {'boost_pressure': boost_pressure}, {'X_FANCY_HEADER': 'VERY FANCY'})
+        print >> boost, float(boost_pressure)
+        data = '-LudfF76bof48zB80laR'
+        snapshot = firebase.put('/obdii/boost', data, {'boost pressure': boost_pressure}, {'X_FANCY_HEADER': 'VERY FANCY'})
 
     # except KeyboardInterrupt:
     #     print "\nFinishing..."
