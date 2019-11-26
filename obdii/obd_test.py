@@ -31,9 +31,15 @@ cmds = {
 }
 
 
+from firebase import firebase
+firebase = firebase.FirebaseApplication('https://planit-a12ac.firebaseio.com', None)
+
+
+
 while True:
     try:
         responses = obd.interface.multi_commands(**cmds)
+
         # speed = responses['SPEED']
         # rpm = responses['RPM']
         # engine_load = responses['ENGINE_LOAD']
@@ -51,6 +57,8 @@ while True:
         # print >> el, float(engine_load)
         # print >> cl, float(coolant_tmp)
         print >> boost, float(boost_pressure)
+        result = firebase.post('/obdii', boost, {'print': 'pretty'}, {'X_FANCY_HEADER': 'VERY FANCY'})
+
 
     except KeyboardInterrupt:
         print "\nFinishing..."
