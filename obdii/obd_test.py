@@ -1,7 +1,4 @@
-import math
 import sys
-import glob
-import pexpect
 import bluetooth
 from obd import OBDII
 from commands import commands
@@ -23,7 +20,10 @@ cmds = {
     
     commands["INTAKE_PRESSURE"].name: commands["INTAKE_PRESSURE"],
     commands["BAROMETRIC_PRESSURE"].name: commands["BAROMETRIC_PRESSURE"],
+    commands["ENGINE_REFERENCE_TQ"].name: commands["ENGINE_REFERENCE_TQ"],
+    commands["RPM"].name: commands["RPM"]
 }
+
 max_psi = -100
 max_bars = -100
 min_psi = 0
@@ -32,6 +32,12 @@ while True:
     try:
         #get obdii responses
         responses = obd.interface.multi_commands(**cmds)
+
+        engine_speed = responses['RPM']
+        engine_reference_tq = responses['ENGINE_REFERENCE_TQ']
+
+        horsepower = int((engine_speed * engine_reference_tq) / 52)
+        print("Horsepower: ", horsepower)
 
         #intake pressure and barometric pressure readings
         intake_pressure = responses['INTAKE_PRESSURE']

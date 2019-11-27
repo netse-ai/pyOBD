@@ -79,3 +79,8 @@ def engine_percent_tq(val):
     lower = float(int('0x'+ val[2:4], 0))
     return (upper+lower) * 0.73756
 
+def engine_reference_tq(val):
+    upper = float(int('0x'+ val[0:2], 0)) * 256
+    lower = float(int('0x'+ val[2:4], 0))
+    return (upper+lower)
+
