@@ -39,8 +39,8 @@ class ELM327(object):
             raise ELM327Error("rfcomm0 already exists")
         except:
             
-            os.system("sudo rfcomm bind rfcomm0 00:1D:A5:1F:BA:0D")
-            # os.system("sudo rfcomm bind rfcomm0 00:1D:A5:02:86:67")
+            # os.system("sudo rfcomm bind rfcomm0 00:1D:A5:1F:BA:0D")
+            os.system("sudo rfcomm bind rfcomm0 00:1D:A5:02:86:67")
         try:
             self.ser = serial.Serial('/dev/rfcomm0', baudrate=self.baudrate, timeout=self.timeout)
             if self.ser.isOpen():
