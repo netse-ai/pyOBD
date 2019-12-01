@@ -10,7 +10,7 @@ firebase = firebase.FirebaseApplication('https://planit-a12ac.firebaseio.com', N
 data = '-LudfF76bof48zB80laR'
 
 #create an OBDI instance
-obd = OBDII(baudrate=115200, timeout=0.5)
+obd = OBDII(baudrate=115200, timeout=0.2)
 
 #connect to elm327
 obd.connect()
