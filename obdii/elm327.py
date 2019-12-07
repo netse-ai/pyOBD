@@ -47,7 +47,7 @@ class ELM327(object):
                 print "Connection with: {0} established".format(self.ser.name)
                 self.command("ATSP0")
                 self.command("ATZ")
-                self.command('ASTP0')
+                self.command('ATSP0')
                 self.command('ATH0')
                 print "Testing Connection Read"
                 try:
@@ -61,6 +61,15 @@ class ELM327(object):
 
     def monitor_all(self):
         if self.ser.isOpen():
+            self.command("ATZ")
+            self.command("ATD")
+            self.command("ATE0")
+            self.command("ATSPB")
+            self.command("ATS0")
+            self.command("ATL0")
+            self.command("ATAL")
+            self.command("ATPBC001")
+            self.command("ATH1")
             while True:
                 print self.command("ATMA")
 
