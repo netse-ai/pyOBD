@@ -17,7 +17,7 @@ obd.connect()
 
 # obd.interface.monitor_all()
 
-create a commands object to be passed to obd
+# create a commands object to be passed to obd
 cmds = {
     
     commands["INTAKE_PRESSURE"].name: commands["INTAKE_PRESSURE"],
