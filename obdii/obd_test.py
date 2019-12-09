@@ -33,7 +33,7 @@ min_bars = 0
 while True:
     try:
         #get obdii responses
-        # responses = obd.interface.multi_commands(**cmds)
+        responses = obd.interface.multi_commands(**cmds)
 
         # engine_speed = responses['RPM']
         # engine_reference_tq = responses['ENGINE_REFERENCE_TQ']
