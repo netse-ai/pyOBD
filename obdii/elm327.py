@@ -77,14 +77,12 @@ class ELM327(object):
         if self.ser.isOpen():
             if hasattr(cmd, 'cmd'):
                 msg = cmd.cmd
-                cmd += " 1"
-                msg += "\r"
+                msg += "1\r"
                 self.write(msg)
                 return self.read(cmd.byte_length, cmd.decoder)
             else:
                 msg = cmd
-                cmd += " 1"
-                msg += '\r'
+                msg += '1\r'
                 self.write(msg)
                 return self.read()
 
