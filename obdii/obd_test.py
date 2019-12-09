@@ -22,8 +22,8 @@ cmds = {
     
     commands["INTAKE_PRESSURE"].name: commands["INTAKE_PRESSURE"],
     commands["BAROMETRIC_PRESSURE"].name: commands["BAROMETRIC_PRESSURE"],
-    # commands["ENGINE_REFERENCE_TQ"].name: commands["ENGINE_REFERENCE_TQ"],
-    # commands["RPM"].name: commands["RPM"]
+    commands["ENGINE_REFERENCE_TQ"].name: commands["ENGINE_REFERENCE_TQ"],
+    commands["RPM"].name: commands["RPM"]
 }
 
 max_psi = -100
