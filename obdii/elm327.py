@@ -77,11 +77,13 @@ class ELM327(object):
         if self.ser.isOpen():
             if hasattr(cmd, 'cmd'):
                 msg = cmd.cmd
+                cmd += " 1"
                 msg += "\r"
                 self.write(msg)
                 return self.read(cmd.byte_length, cmd.decoder)
             else:
                 msg = cmd
+                cmd += " 1"
                 msg += '\r'
                 self.write(msg)
                 return self.read()
@@ -106,8 +108,6 @@ class ELM327(object):
             return data
 
     def write(self, cmd):
-        cmd += " 1"
-        print("CMD: ", cmd)
         if self.ser.isOpen():
             try:
                 self.ser.flushInput()
