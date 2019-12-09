@@ -35,11 +35,11 @@ while True:
         #get obdii responses
         responses = obd.interface.multi_commands(**cmds)
 
-        # engine_speed = responses['RPM']
-        # engine_reference_tq = responses['ENGINE_REFERENCE_TQ']
+        engine_speed = responses['RPM']
+        engine_reference_tq = responses['ENGINE_REFERENCE_TQ']
 
-        # horsepower = int((engine_speed * engine_reference_tq) / 52)
-        # print("Horsepower: ", horsepower)
+        horsepower = int((engine_speed * engine_reference_tq) / 52)
+        print("Horsepower: ", horsepower)
 
         #intake pressure and barometric pressure readings
         intake_pressure = responses['INTAKE_PRESSURE']
