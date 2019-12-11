@@ -88,8 +88,11 @@ class ELM327(object):
 
     def read(self, byte_length=None, decoder=None):
         if self.ser.isOpen():
-            data = self.ser.readline().split(' ')
+            data_test = self.ser.readline()
+            data = data_test.split(' ')
+            print("DATA TEST: ", data_test)
             print("DATA: ", data)
+
             # print data
             if byte_length == 1:
                 data = data[-2]
