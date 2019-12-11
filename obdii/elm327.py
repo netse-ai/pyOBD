@@ -90,23 +90,24 @@ class ELM327(object):
         if self.ser.isOpen():
             data_test = self.ser.readline()
             data = data_test.split(' ')
-            print("DATA TEST: ", data_test)
-            print("DATA: ", data)
-
+            print("DATA TEST: ", len(data_test))
+            print("DATA: ", len(data))
             # print data
-            if byte_length == 1:
-                data = data[-2]
-            elif byte_length == 2:
-                data = data[-2].join(data[-3])
-            if decoder != None:
-                try:
-                    data = decoder(data)
-                    #Issue with returning in a try/except?
-                    # return decoder(data)
-                except ValueError:
-                    #return None
-                    data = None
-            return data
+            if len(data) > 1:
+                if byte_length == 1:
+                    data = data[-2]
+                elif byte_length == 2:
+                    data = data[-2].join(data[-3])
+                if decoder != None:
+                    try:
+                        data = decoder(data)
+                        #Issue with returning in a try/except?
+                        # return decoder(data)
+                    except ValueError:
+                        #return None
+                        data = None
+                return data
+            return 1
 
     def write(self, cmd):
         if self.ser.isOpen():
