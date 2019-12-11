@@ -78,5 +78,5 @@ def engine_reference_tq(val):
     print("ref tqq")
     upper = float(int('0x'+ val[0:2], 0)) * 256
     lower = float(int('0x'+ val[2:4], 0))
-    return (upper+lower)
+    return (upper + lower) / 4
 
