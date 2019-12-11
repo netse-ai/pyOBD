@@ -99,7 +99,7 @@ cmds = [
     OBDCommand("FUEL_RATE"                  , "Engine fuel rate"                        , "015E", 2, decoder=None, fast=True),
     OBDCommand("EMISSION_REQ"               , "Designed emission requirements"          , "015F", 1, decoder=None, fast=True),
     OBDCommand("ENGINE_PERCENT_TQ"          , "Engine percent torque"                   , "0164", 1, decoder=engine_percent_tq, fast=True),
-    OBDCommand("ENGINE_REFERENCE_TQ"        , "Engine reference torque"                 , "0164", 5, decoder=engine_reference_tq, fast=True),
+    OBDCommand("ENGINE_REFERENCE_TQ"        , "Engine reference torque"                 , "0164", 2, decoder=engine_reference_tq, fast=True),
 
             #################################### OBD AT COMMANDS ############################################
     OBDCommand("RESET_ALL"                  , "Reset all"                               , "ATZ",  1, decoder=at_decoder, fast=True),    
