@@ -9,13 +9,10 @@ def speed(val):
     return data
 
 def rpm(val):
-    try:
-        print "RPM: {0}".format(val)
-        upper = float(int('0x'+ val[0:2], 0)) * 256
-        lower = float(int('0x'+ val[2:4], 0))
-        data = (upper + lower) / 4
-    except ValueError:
-        data = None
+    print "RPM: {0}".format(val)
+    upper = float(int('0x'+ val[0:2], 0)) * 256
+    lower = float(int('0x'+ val[2:4], 0))
+    data = (upper + lower) / 4
     return data
 
 def engine_load(val):
