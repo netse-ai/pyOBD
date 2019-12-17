@@ -93,21 +93,21 @@ class ELM327(object):
             # print("DATA TEST: ", len(data_test))
             # print("DATA: ", len(data))
             # print data
-            if len(data) > 1:
-                if byte_length == 1:
-                    data = data[-2]
-                elif byte_length == 2:
-                    data = data[-2].join(data[-3])
-                if decoder != None:
-                    try:
-                        data = decoder(data)
-                        #Issue with returning in a try/except?
-                        # return decoder(data)
-                    except ValueError:
-                        #return None
-                        data = None
-                return data
-            return 1
+            # if len(data) > 1:
+            if byte_length == 1:
+                data = data[-2]
+            elif byte_length == 2:
+                data = data[-2].join(data[-3])
+            if decoder != None:
+                try:
+                    data = decoder(data)
+                    #Issue with returning in a try/except?
+                    # return decoder(data)
+                except ValueError:
+                    #return None
+                    data = None
+            return data
+            # return 1 
 
     def write(self, cmd):
         if self.ser.isOpen():
