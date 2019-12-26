@@ -89,10 +89,10 @@ class ELM327(object):
     def read(self, byte_length=None, decoder=None):
         if self.ser.isOpen():
             data_test = self.ser.readline()
-            print("DATA TEST: ", data_test, len(data_test))
-            data = data_test.split(' ')
-            print("DATA: ", data, len(data))
-            print byte_length
+            # print("DATA TEST: ", data_test, len(data_test))
+            # data = data_test.split(' ')
+            # print("DATA: ", data, len(data))
+            # print byte_length
             # if len(data) > 1:
             if byte_length == 1:
                 data = data[-2]
