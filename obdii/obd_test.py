@@ -22,7 +22,7 @@ cmds = {
     
     # commands["INTAKE_PRESSURE"].name: commands["INTAKE_PRESSURE"],
     # commands["BAROMETRIC_PRESSURE"].name: commands["BAROMETRIC_PRESSURE"],
-    # commands["ENGINE_REFERENCE_TQ"].name: commands["ENGINE_REFERENCE_TQ"],
+    commands["ENGINE_REFERENCE_TQ"].name: commands["ENGINE_REFERENCE_TQ"],
     commands["RPM"].name: commands["RPM"]
 }
 
@@ -37,8 +37,8 @@ while True:
 
         engine_speed = responses['RPM']
         print(engine_speed)
-        # engine_reference_tq = responses['ENGINE_REFERENCE_TQ']
-        # print("engine_reference_tq: ", engine_reference_tq)
+        engine_reference_tq = responses['ENGINE_REFERENCE_TQ']
+        print("engine_reference_tq: ", engine_reference_tq)
 
         # horsepower = int((engine_speed * engine_reference_tq) / 52)
         # print("Horsepower: ", horsepower)
