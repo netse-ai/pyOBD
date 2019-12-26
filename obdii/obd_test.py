@@ -35,8 +35,8 @@ while True:
         #get obdii responses
         responses = obd.interface.multi_commands(**cmds)
 
-        # engine_speed = responses['RPM']
-        # print(engine_speed)
+        engine_speed = responses['RPM']
+        print(engine_speed)
         # engine_reference_tq = responses['ENGINE_REFERENCE_TQ']
         # print("engine_reference_tq: ", engine_reference_tq)
 
