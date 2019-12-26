@@ -22,8 +22,8 @@ cmds = {
     
     # commands["INTAKE_PRESSURE"].name: commands["INTAKE_PRESSURE"],
     # commands["BAROMETRIC_PRESSURE"].name: commands["BAROMETRIC_PRESSURE"],
-    # commands["ENGINE_REFERENCE_TQ"].name: commands["ENGINE_REFERENCE_TQ"],
-    commands["RPM"].name: commands["RPM"]
+    commands["ENGINE_REFERENCE_TQ"].name: commands["ENGINE_REFERENCE_TQ"],
+    # commands["RPM"].name: commands["RPM"]
 }
 
 max_psi = -100
@@ -35,8 +35,8 @@ while True:
         #get obdii responses
         responses = obd.interface.multi_commands(**cmds)
 
-        engine_speed = responses['RPM']
-        print(engine_speed)
+        # engine_speed = responses['RPM']
+        # print(engine_speed)
         # engine_reference_tq = responses['ENGINE_REFERENCE_TQ']
         # print("engine_reference_tq: ", engine_reference_tq)
 
