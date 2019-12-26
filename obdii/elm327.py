@@ -92,7 +92,7 @@ class ELM327(object):
             data = data_test.split(' ')
             # print("DATA TEST: ", len(data_test))
             # print("DATA: ", len(data))
-            # print data
+            print data
             # if len(data) > 1:
             if byte_length == 1:
                 data = data[-2]
