@@ -90,8 +90,8 @@ class ELM327(object):
         if self.ser.isOpen():
             data_test = self.ser.readline()
             data = data_test.split(' ')
-            # print("DATA TEST: ", len(data_test))
-            # print("DATA: ", len(data))
+            print("DATA TEST: ", len(data_test))
+            print("DATA: ", len(data))
             # print data
             # if len(data) > 1:
             if byte_length == 1:
