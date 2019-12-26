@@ -37,8 +37,8 @@ while True:
 
         engine_speed = responses['RPM']
         print(engine_speed)
-        engine_reference_tq = responses['ENGINE_REFERENCE_TQ']
-        print("engine_reference_tq: ", engine_reference_tq)
+        # engine_reference_tq = responses['ENGINE_REFERENCE_TQ']
+        # print("engine_reference_tq: ", engine_reference_tq)
 
         # horsepower = int((engine_speed * engine_reference_tq) / 52)
         # print("Horsepower: ", horsepower)
